@@ -169,7 +169,7 @@ const featured: FeaturedItem[] = [
   {
     title: "NORMAN MANGUSIN NILAGLAG NG SCHOLARS NIYA (INTERVIEW)",
     href: "https://www.youtube.com/watch?v=TzXCAgB2P10",
-    thumb: "/images/makagago/featured-video-1.avif",
+    thumb: "/images/makagago/latest-video-1.avif",
     videoDuration: "51:45",
     viewCount: "97K",
     note: "",
