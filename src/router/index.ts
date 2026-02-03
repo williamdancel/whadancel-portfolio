@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const Home = () => import('../views/PortfolioHome.vue')
 const Makagago = () => import('../views/mgwm/MakagagoHome.vue')
+const Eifl = () => import('../views/eifl-lending/EIFLHome.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,6 +23,15 @@ const router = createRouter({
       meta: {
         title: 'MGWM - Website Proposal',
         favicon: '/favicon/mgwm/favicon.ico' // Makagago favicon
+      }
+    },
+    {
+      path: '/eifl-lending-corporation',
+      name: 'eifl-lending-corporation',
+      component: Eifl,
+      meta: {
+        title: 'EIFL Lending - Website Proposal',
+        favicon: '/favicon/eifl-lending/favicon.ico' // EIFL Lending favicon
       }
     }
   ]
