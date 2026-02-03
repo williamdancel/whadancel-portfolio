@@ -218,7 +218,7 @@ onBeforeUnmount(() => {
         </div>
 
         <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-800">
-            Eifl Lending Corporation
+            EIFL Lending Corporation
             <span class="block text-[#0B1F5D] font-normal text-sm mt-1">
             A sister company of EIFL Loan facilitation services, inc.
             </span>
