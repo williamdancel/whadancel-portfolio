@@ -834,8 +834,8 @@ onBeforeUnmount(() => {
 
     <section id="merch" class="relative w-full px-6 py-14 md:px-10 md:py-20">
     <div class="text-center">
-        <div class="mx-auto inline-flex items-center gap-3 rounded-full bg-white/5 px-5 py-2 text-sm text-neutral-200 ring-1 ring-white/10">
-        The Biggest Official Merchandise
+        <div>
+          <h3 class="text-3xl font-extrabold tracking-tight md:text-4xl">The Biggest Merch</h3>
         </div>
         <p class="mt-3 text-sm text-neutral-300">
         Support the brand with official the biggest gear.
