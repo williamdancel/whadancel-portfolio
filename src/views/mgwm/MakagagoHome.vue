@@ -118,6 +118,7 @@ const showBackToTop = ref<boolean>(false);
 // lock observer during programmatic scroll (nav clicks)
 const isProgrammaticScroll = ref<boolean>(false);
 let scrollLockTimer: ReturnType<typeof setTimeout> | null = null;
+const entryMap = new Map<string, IntersectionObserverEntry>();
 
 const headerOffset = 96;
 
@@ -399,23 +400,30 @@ onMounted(() => {
   if (hash && ids.includes(hash)) activeSection.value = hash;
 
   observer = new IntersectionObserver(
-    (entries) => {
-      if (isProgrammaticScroll.value) return;
+  (entries) => {
+    if (isProgrammaticScroll.value) return;
 
-      const visible = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
-
-      if (visible?.target && (visible.target as HTMLElement).id) {
-        activeSection.value = (visible.target as HTMLElement).id;
-      }
-    },
-    {
-      root: null,
-      threshold: [0.25, 0.4, 0.55, 0.7],
-      rootMargin: `-${headerOffset}px 0px -60% 0px`,
+    // store latest state for each section
+    for (const e of entries) {
+      const id = (e.target as HTMLElement).id;
+      if (id) entryMap.set(id, e);
     }
-  );
+
+    // pick best visible section across ALL tracked entries
+    const visible = Array.from(entryMap.values())
+      .filter((e) => e.isIntersecting)
+      .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0))[0];
+
+    if (visible?.target) {
+      activeSection.value = (visible.target as HTMLElement).id;
+    }
+  },
+  {
+    root: null,
+    threshold: [0.1, 0.25, 0.4, 0.55],
+    rootMargin: `-${headerOffset}px 0px -55% 0px`,
+  }
+);
 
   sections.forEach((sec) => observer?.observe(sec));
 
@@ -446,8 +454,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div id="top" class="min-h-screen bg-neutral-950 text-neutral-100">
-    <!-- LOADING SPLASH -->
+  <!-- LOADING SPLASH -->
     <transition name="splash">
         <div
         v-if="isLoading"
@@ -477,7 +484,7 @@ onBeforeUnmount(() => {
             Makagago - Wazzup Man
             </p>
 
-            <h2 class="mt-3 text-2xl font-black tracking-tight md:text-3xl">
+            <h2 class="mt-3 text-2xl font-black tracking-tight md:text-3xl text-neutral-100">
             <span class="text-red-500">1L</span>GFV
             </h2>
 
@@ -495,6 +502,8 @@ onBeforeUnmount(() => {
         </div>
         </div>
     </transition>
+  <div class="min-h-screen bg-neutral-950 text-neutral-100">
+     <div id="top" class="h-px"></div>
 
     <!-- subtle controlled glow -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden">
