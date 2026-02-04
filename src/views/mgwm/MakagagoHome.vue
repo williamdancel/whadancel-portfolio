@@ -172,7 +172,7 @@ const featured: FeaturedItem[] = [
     href: "https://www.youtube.com/watch?v=TzXCAgB2P10",
     thumb: "/images/makagago/latest-video-1.avif",
     videoDuration: "51:45",
-    viewCount: "97K",
+    viewCount: "396K",
     note: "",
   },
   {
@@ -197,6 +197,21 @@ const featured: FeaturedItem[] = [
     thumb: "/images/makagago/featured-video-3.avif",
     videoDuration: "1:02:40",
     viewCount: "333K",
+    note: "",
+  },
+  {
+    title: "GEO ONG BINASTOS NGA BA ANG ASAWA?",
+    href: "https://www.youtube.com/watch?v=-7pRaFTRuCU",
+    thumb: "/images/makagago/latest-video-5.avif",
+    videoDuration: "18:30",
+    viewCount: "342K",
+    note: "",
+  },{
+    title: "NORMAN MANGUSIN NILAGLAG NG MOMMY NIYA (INTERVIEW)",
+    href: "https://www.youtube.com/watch?v=POPFvk50JBA&t=102s",
+    thumb: "/images/makagago/latest-video-6.avif",
+    videoDuration: "41:57",
+    viewCount: "422K",
     note: "",
   },
 ];
