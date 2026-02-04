@@ -40,6 +40,10 @@ const handleResize = () => {
   if (window.innerWidth >= 768) mobileNavOpen.value = false
 }
 
+// Section reveal animations
+const showDetails = ref(false)
+const showBenefits = ref(false)
+
 // ===== Scroll + active state (stable) =====
 let sectionEls: HTMLElement[] = []
 let rafId = 0
@@ -191,6 +195,33 @@ onMounted(() => {
     applyScrollMargins()
     updateActiveByScroll()
   }, 250)
+
+  // Section entrance animations
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (entry.target.id === 'details') showDetails.value = true
+        if (entry.target.id === 'benefits') showBenefits.value = true
+      }
+    })
+  },
+  {
+    rootMargin: '-10% 0px -20% 0px',
+    threshold: 0.2,
+  }
+)
+
+const detailsEl = document.getElementById('details')
+const benefitsEl = document.getElementById('benefits')
+
+if (detailsEl) {
+  revealObserver.observe(detailsEl)
+}
+
+if (benefitsEl) {
+  revealObserver.observe(benefitsEl)
+}
 })
 
 onBeforeUnmount(() => {
@@ -475,8 +506,13 @@ onBeforeUnmount(() => {
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
+      <div
+        class="grid md:grid-cols-3 gap-6 transition-all duration-700"
+        :class="showDetails ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+      >
+        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200
+         transition-all duration-300 ease-out
+         hover:-translate-y-1 hover:shadow-lg" style="transition-delay: 100ms">
           <div class="flex items-center justify-between">
             <div class="text-sm text-slate-600">Loan Amount</div>
             <i class="fa-solid fa-wallet text-[#0B1F5D]"></i>
@@ -485,7 +521,9 @@ onBeforeUnmount(() => {
           <p class="mt-3 text-slate-700 text-sm">Financing range depending on business size and requirements.</p>
         </div>
 
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
+        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200
+         transition-all duration-300 ease-out
+         hover:-translate-y-1 hover:shadow-lg" style="transition-delay: 200ms">
           <div class="flex items-center justify-between">
             <div class="text-sm text-slate-600">Processing Time</div>
             <i class="fa-solid fa-bolt text-[#0B1F5D]"></i>
@@ -494,7 +532,9 @@ onBeforeUnmount(() => {
           <p class="mt-3 text-slate-700 text-sm">Fast evaluation and release once documents are complete.</p>
         </div>
 
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
+        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200
+         transition-all duration-300 ease-out
+         hover:-translate-y-1 hover:shadow-lg" style="transition-delay: 300ms">
           <div class="flex items-center justify-between">
             <div class="text-sm text-slate-600">Repayment Terms</div>
             <i class="fa-solid fa-calendar-check text-[#0B1F5D]"></i>
@@ -504,8 +544,9 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <div class="mt-10 grid lg:grid-cols-2 gap-6">
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200">
+      <div class="mt-10 grid lg:grid-cols-2 gap-6 duration-700"
+        :class="showDetails ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200" style="transition-delay: 400ms">
           <h2 class="text-xl font-bold flex items-center gap-2">
             <i class="fa-solid fa-list-check text-[#0B1F5D]"></i>
             Basic Requirements
@@ -519,7 +560,7 @@ onBeforeUnmount(() => {
           </ul>
         </div>
 
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200">
+        <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-sm ring-1 ring-slate-200" style="transition-delay: 500ms">
           <h2 class="text-xl font-bold flex items-center gap-2">
             <i class="fa-solid fa-lock text-[#0B1F5D]"></i>
             Confidential & Secure
@@ -542,25 +583,61 @@ onBeforeUnmount(() => {
         </p>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-6">
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
-          <img src="/images/eifl-lending/flexible-repayment-term.png" alt="Flexible Repayment Term" class="w-full rounded-xl" />
+      <div
+        class="grid lg:grid-cols-2 gap-6 transition-all duration-700"
+        :class="showBenefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+      >
+        <div
+          class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200
+                transition-all duration-300 ease-out
+                hover:-translate-y-1 hover:shadow-xl"
+        >
+          <img
+            src="/images/eifl-lending/flexible-repayment-term.png"
+            class="w-full rounded-xl transition-transform duration-500 hover:scale-[1.02]"
+          />
+        </div>
+        <div
+          class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200
+                transition-all duration-300 ease-out
+                hover:-translate-y-1 hover:shadow-xl"
+        >
+          <img
+            src="/images/eifl-lending/competitive-interest-rate.png"
+            class="w-full rounded-xl transition-transform duration-500 hover:scale-[1.02]"
+          />
+        </div>
+        <div
+          class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200
+                transition-all duration-300 ease-out
+                hover:-translate-y-1 hover:shadow-xl"
+        >
+          <img
+            src="/images/eifl-lending/complete-docs-faster-release.png"
+            class="w-full rounded-xl transition-transform duration-500 hover:scale-[1.02]"
+          />
         </div>
 
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
-          <img src="/images/eifl-lending/competitive-interest-rate.png" alt="Competitive Interest Rate" class="w-full rounded-xl" />
+        <div
+          class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200
+                transition-all duration-300 ease-out
+                hover:-translate-y-1 hover:shadow-xl"
+        >
+          <img
+            src="/images/eifl-lending/accelerate-your-loan-approval.png"
+            class="w-full rounded-xl transition-transform duration-500 hover:scale-[1.02]"
+          />
         </div>
 
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
-          <img src="/images/eifl-lending/complete-docs-faster-release.png" alt="Complete Docs Faster Release" class="w-full rounded-xl" />
-        </div>
-
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition">
-          <img src="/images/eifl-lending/accelerate-your-loan-approval.png" alt="Accelerate Your Loan Approval" class="w-full rounded-xl" />
-        </div>
-
-        <div class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200 hover:shadow-md transition lg:col-span-2">
-          <img src="/images/eifl-lending/access-flexible-loans.png" alt="Access Flexible Loans" class="w-full rounded-xl" />
+        <div
+          class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm ring-1 ring-slate-200
+                transition-all duration-300 ease-out
+                hover:-translate-y-1 hover:shadow-xl"
+        >
+          <img
+            src="/images/eifl-lending/access-flexible-loans.png"
+            class="w-full rounded-xl transition-transform duration-500 hover:scale-[1.02]"
+          />
         </div>
       </div>
     </section>
@@ -775,5 +852,12 @@ onBeforeUnmount(() => {
 .eifl-glow {
   animation: eiflGlow 1.6s ease-in-out infinite;
   ring: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 </style>
