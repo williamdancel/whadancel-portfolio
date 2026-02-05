@@ -168,6 +168,13 @@ const scrollTo = (id: string): void => {
  * ------------------------------*/
 const featured: FeaturedItem[] = [
   {
+    title: "NORMAN MANGUSIN SCRIPTED NA PAGTULONG",
+    href: "https://www.youtube.com/watch?v=kxQrxDfS1JI&t=438s",
+    thumb: "/images/makagago/latest-video-1-1.avif",
+    videoDuration: "1:00:01",
+    viewCount: "273K",
+    note: "",
+  },{
     title: "NORMAN MANGUSIN NILAGLAG NG SCHOLARS NIYA (INTERVIEW)",
     href: "https://www.youtube.com/watch?v=TzXCAgB2P10",
     thumb: "/images/makagago/latest-video-1.avif",
@@ -206,14 +213,7 @@ const featured: FeaturedItem[] = [
     videoDuration: "18:30",
     viewCount: "342K",
     note: "",
-  },{
-    title: "NORMAN MANGUSIN NILAGLAG NG MOMMY NIYA (INTERVIEW)",
-    href: "https://www.youtube.com/watch?v=POPFvk50JBA&t=102s",
-    thumb: "/images/makagago/latest-video-6.avif",
-    videoDuration: "41:57",
-    viewCount: "422K",
-    note: "",
-  },
+  }
 ];
 
 const seriesRows: SeriesRow[] = [
@@ -222,7 +222,7 @@ const seriesRows: SeriesRow[] = [
     items: [
       {
         name: "FRANCIS LEO MARCOS EPISODES",
-        count: "62 videos",
+        count: "63 videos",
         thumb: "/images/makagago/series/flm-series.jpg",
         href: "https://www.youtube.com/watch?v=vKSA-e41zTI&list=PLvhbEtwm1bb6zdhISxA2FQ2ayuoAU8Rw6",
       },
@@ -296,6 +296,11 @@ const partners: PartnerItem[] = [
     name: "Manny Pay",
     logo: "/images/makagago/partners/mannypay.png",
     link: "https://www.mannypay.ph/",
+  },
+    {
+    name: "Tap Tap Send",
+    logo: "/images/makagago/partners/taptap-send.png",
+    link: "https://www.taptapsend.com/",
   },
 ];
 
