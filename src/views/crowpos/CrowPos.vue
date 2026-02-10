@@ -317,14 +317,17 @@
         <div
           v-if="videoLightbox.open"
           class="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm"
-          @click.self="closeVideoLightbox"
+          @click="closeVideoLightbox"
         >
           <div class="mx-auto flex h-full max-w-6xl items-center justify-center p-4 sm:p-6">
-            <div class="relative w-full rounded-2xl bg-slate-950/80 ring-1 ring-white/10">
+            <div
+              class="relative w-full rounded-2xl bg-slate-950/80 ring-1 ring-white/10"
+              @click.stop
+            >
               <button
                 type="button"
-                class="absolute right-3 top-3 rounded-xl bg-white/5 px-3 py-2 text-sm font-semibold text-white ring-1 ring-white/10 hover:bg-white/10"
-                @click="closeVideoLightbox"
+                class="absolute right-3 top-3 z-[999] rounded-xl bg-black/50 px-3 py-2 text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-black/70"
+                @click.stop="closeVideoLightbox"
                 aria-label="Close video"
               >
                 ✕
@@ -343,20 +346,25 @@
                   <source :src="videoLightbox.src" type="video/mp4" />
                 </video>
               </div>
+
+              <!-- optional: mobile hint -->
+              <div class="px-4 pb-4 text-center text-xs text-slate-400 sm:hidden">
+                Tap outside the video to close
+              </div>
             </div>
           </div>
         </div>
+        <!-- Back to top -->
+        <button
+          v-show="showBackToTop"
+          @click="scrollToTop"
+          class="fixed bottom-6 right-6 z-50 rounded-2xl bg-white/10 backdrop-blur px-4 py-3 text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-white/20 transition-all"
+          aria-label="Back to top"
+        >
+          ↑ Top
+        </button>
     </main>
   </div>
-<!-- Back to top -->
-<button
-  v-show="showBackToTop"
-  @click="scrollToTop"
-  class="fixed bottom-6 right-6 z-50 rounded-2xl bg-white/10 backdrop-blur px-4 py-3 text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-white/20 transition-all"
-  aria-label="Back to top"
->
-  ↑ Top
-</button>
 </template>
 
 <script setup lang="ts">
