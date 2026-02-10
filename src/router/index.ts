@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const Home = () => import('../views/PortfolioHome.vue')
+const Crowpos = () => import('../views/crowpos/CrowPos.vue')
 const Makagago = () => import('../views/mgwm/MakagagoHome.vue')
 const Eifl = () => import('../views/eifl-lending/EIFLHome.vue')
 
@@ -14,6 +15,15 @@ const router = createRouter({
       meta: {
         title: 'William Dancel - Portfolio',
         favicon: '/favicon/favicon.ico' // default favicon
+      }
+    },
+    {
+      path: '/crowpos',
+      name: 'crowpos',
+      component: Crowpos,
+      meta: {
+        title: 'CrowPOS - Simple point of sale for daily business.',
+        favicon: '/favicon/crowpos/favicon.ico' // crowpos favicon
       }
     },
     {
