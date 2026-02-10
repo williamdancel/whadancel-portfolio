@@ -18,7 +18,18 @@ const skills = [
   { group: "Workflow", items: ["Git (GitHub/GitLab/Bitbucket)", "Remote Collaboration", "Cross-timezone communication"] },
 ];
 
-const highlights = [
+type ProjectCta = { label: string; href: string } | null;
+
+type HighlightProject = {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  bullets: string[];
+  url: string;
+  cta: ProjectCta;
+};
+
+const highlights: HighlightProject[] = [
   {
     title: "CrowPOS",
     subtitle: "CrowPOS is an offline-capable desktop POS. Simple and clean.",
