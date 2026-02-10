@@ -12,29 +12,41 @@ const profile = {
 };
 
 const skills = [
-  { group: "Backend", items: ["PHP 7.2+–8.3+", "Laravel 12", "CodeIgniter 3", "CakePHP 4", "REST APIs"] },
-  { group: "Frontend", items: ["Vue 3", "JavaScript", "jQuery", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap CSS"] },
+  { group: "Backend", items: ["PHP 7.2+–8.3+", "Laravel 12", "NativePHP", "CodeIgniter 3", "CakePHP 4", "REST APIs"] },
+  { group: "Frontend", items: ["Vue 3", "Livewire", "JavaScript", "jQuery", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap CSS"] },
   { group: "Data", items: ["MySQL", "PostgreSQL"] },
   { group: "Workflow", items: ["Git (GitHub/GitLab/Bitbucket)", "Remote Collaboration", "Cross-timezone communication"] },
 ];
 
 const highlights = [
   {
+    title: "CrowPOS",
+    subtitle: "CrowPOS is an offline-capable desktop POS. Simple and clean.",
+    tags: ["Laravel 12", "Vue 3", "Tailwind CSS"],
+    bullets: [
+      "Run Fast Checkouts",
+      "Manage categories and items",
+      "View Sales Reports",
+    ],
+    url: "https://www.whadancel.dev/crowpos",
+    cta: null, 
+  },
+  {
     title: "kukuys.live",
     subtitle: "Freelance website for Kukuys Streamer Group (Dota 2 Pros)",
-    tags: ["Laravel 12", "Vue 3", "Tailwind"],
+    tags: ["Laravel 12", "Vue 3", "Tailwind CSS"],
     bullets: [
       "Admin dashboard with Dota Pub Tracker",
       "Taryahan matchmaking for CS2 / Dota 2",
       "Partner Enquiries module",
     ],
     url: "https://kukuys.live",
-    cta: { label: "View GitHub", href: "https://github.com/williamdancel/kukuys" }, 
+    cta: null, 
   },
   {
     title: "Tinbo.ph",
     subtitle: "OFW digital services platform (Payments, Bills, Virtual Numbers)",
-    tags: ["CodeIgniter 3", "jQuery", "Bootstrap"],
+    tags: ["CodeIgniter 3", "jQuery", "Bootstrap CSS"],
     bullets: [
       "Maintained and enhanced production platform features",
       "Worked in a distributed setup with backend microservices team",
@@ -115,7 +127,7 @@ const education = {
   school: "Arellano University",
   degree: "Bachelor of Computer Science major in Information Technology",
   date: "2014 – 2018",
-  thesis: "IT-JOB MATCH – Online Job Matching System (Laravel 5.5)",
+  thesis: "IT-JOB MATCH – Online Job Matching System (Laravel 5.5, Jquery, Bootstrap CSS, MySQL)",
 };
 
 const availability = [
@@ -126,33 +138,23 @@ const availability = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-slate-950 text-slate-100">
+  <div class="min-h-screen bg-slate-50 text-slate-900">
     <!-- Top glow -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden">
-      <div class="absolute -top-32 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-3xl" />
-      <div class="absolute top-40 right-[-8rem] h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl" />
+      <div class="absolute -top-32 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-indigo-200/60 blur-3xl" />
+      <div class="absolute top-40 right-[-8rem] h-72 w-72 rounded-full bg-sky-200/50 blur-3xl" />
     </div>
 
     <!-- Container -->
     <div class="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
-        
-        <!-- Centered Logo -->
-        <div class="mb-10 flex justify-center">
-            <img
-            src="/images/logo.png"
-            alt="Logo"
-            class="h-28 w-28 md:h-36 md:w-36 lg:h-40 lg:w-40 object-contain
-                    drop-shadow-[0_0_35px_rgba(59,130,246,0.45)]"
-            />
-        </div>
       <!-- Header -->
       <header class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div class="flex items-center gap-4">
-          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-white/5 ring-1 ring-white/10">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-white border border-slate-200 shadow-sm">
             <img src="/images/profile.png" alt="Profile Picture" class="h-10 w-10 rounded-lg object-cover" />
           </div>
           <div>
-            <p class="text-sm text-slate-300">Portfolio</p>
+            <p class="text-sm text-slate-600">Portfolio</p>
             <h1 class="text-xl font-semibold tracking-tight">{{ profile.name }}</h1>
           </div>
         </div>
@@ -161,7 +163,7 @@ const availability = [
           <a
             :href="profile.github"
             target="_blank"
-            class="inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-sm ring-1 ring-white/10 hover:bg-white/10"
+            class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm border border-slate-200 hover:bg-slate-200"
           >
             <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
             GitHub
@@ -169,14 +171,14 @@ const availability = [
           <a
             :href="profile.linkedin"
             target="_blank"
-            class="inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-sm ring-1 ring-white/10 hover:bg-white/10"
+            class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm border border-slate-200 hover:bg-slate-200"
           >
             <span class="h-2 w-2 rounded-full bg-sky-400"></span>
             LinkedIn
           </a>
           <a
             :href="`mailto:${profile.email}`"
-            class="inline-flex items-center gap-2 rounded-xl bg-indigo-500 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-400"
+            class="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500"
           >
             Contact
             <span aria-hidden="true">→</span>
@@ -187,7 +189,7 @@ const availability = [
       <!-- Hero -->
       <section class="mt-10 grid gap-8 md:mt-14 md:grid-cols-12">
         <div class="md:col-span-7">
-          <div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-xs text-slate-300 ring-1 ring-white/10">
+          <div class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-xs text-slate-600 ring-1 ring-white/10">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
             Remote-ready • 7+ years • Laravel + Vue
           </div>
@@ -196,32 +198,32 @@ const availability = [
             Building reliable PHP apps with a clean, modern UI.
           </h2>
 
-          <p class="mt-4 text-slate-300 leading-relaxed">
+          <p class="mt-4 text-slate-600 leading-relaxed">
             {{ profile.summary }}
           </p>
 
           <div class="mt-6 flex flex-wrap gap-3">
-            <div class="rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
+            <div class="rounded-xl bg-slate-100 px-4 py-3 ring-1 ring-white/10">
               <p class="text-xs text-slate-400">Role</p>
               <p class="text-sm font-medium">{{ profile.role }}</p>
             </div>
-            <div class="rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
+            <div class="rounded-xl bg-slate-100 px-4 py-3 ring-1 ring-white/10">
               <p class="text-xs text-slate-400">Location</p>
               <p class="text-sm font-medium">{{ profile.location }}</p>
             </div>
           </div>
 
-          <div class="mt-6 flex flex-wrap gap-3 text-sm text-slate-300">
-            <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">📞 {{ profile.phone }}</span>
-            <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">✉ {{ profile.email }}</span>
+          <div class="mt-6 flex flex-wrap gap-3 text-sm text-slate-600">
+            <span class="rounded-lg bg-slate-100 px-3 py-2 ring-1 ring-white/10">📞 {{ profile.phone }}</span>
+            <span class="rounded-lg bg-slate-100 px-3 py-2 ring-1 ring-white/10">✉ {{ profile.email }}</span>
           </div>
         </div>
 
         <div class="md:col-span-5">
-          <div class="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
+          <div class="rounded-3xl bg-slate-100 p-6 ring-1 ring-white/10">
             <h3 class="text-lg font-semibold">Core Skills</h3>
-            <p class="mt-1 text-sm text-slate-300">
-              Primary stack: <span class="text-white">Laravel 12 • Vue 3 • Tailwind</span>
+            <p class="mt-1 text-sm text-slate-600">
+              Primary stack: <span class="text-black">Laravel 12 • Vue 3 • Tailwind</span>
             </p>
 
             <div class="mt-5 space-y-4">
@@ -231,7 +233,7 @@ const availability = [
                   <span
                     v-for="item in s.items"
                     :key="item"
-                    class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-200 ring-1 ring-white/10"
+                    class="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700 ring-1 ring-white/10"
                   >
                     {{ item }}
                   </span>
@@ -242,7 +244,7 @@ const availability = [
 
           <div class="mt-5 rounded-3xl bg-gradient-to-b from-indigo-500/20 to-fuchsia-500/10 p-6 ring-1 ring-white/10">
             <h3 class="text-lg font-semibold">Availability</h3>
-            <ul class="mt-3 space-y-2 text-sm text-slate-200">
+            <ul class="mt-3 space-y-2 text-sm text-slate-700">
               <li v-for="(a, idx) in availability" :key="idx" class="flex gap-2">
                 <span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-emerald-400"></span>
                 <span>{{ a }}</span>
@@ -257,7 +259,7 @@ const availability = [
         <div class="flex items-end justify-between gap-4">
           <div>
             <h3 class="text-2xl font-semibold tracking-tight">Highlighted Projects</h3>
-            <p class="mt-1 text-sm text-slate-300">Production-focused work with admin dashboards, APIs, and real users.</p>
+            <p class="mt-1 text-sm text-slate-600">Production-focused work with admin dashboards, APIs, and real users.</p>
           </div>
         </div>
 
@@ -265,14 +267,14 @@ const availability = [
           <article
             v-for="p in highlights"
             :key="p.title"
-            class="group rounded-3xl bg-white/5 p-6 ring-1 ring-white/10 transition hover:bg-white/10"
+            class="group rounded-3xl bg-slate-100 p-6 ring-1 ring-white/10 transition hover:bg-white/10"
           >
             <div class="flex items-start justify-between gap-3">
               <div>
                 <h4 class="text-lg font-semibold">{{ p.title }}</h4>
-                <p class="mt-1 text-sm text-slate-300">{{ p.subtitle }}</p>
+                <p class="mt-1 text-sm text-slate-600">{{ p.subtitle }}</p>
               </div>
-              <div class="h-10 w-10 rounded-2xl bg-slate-950/40 ring-1 ring-white/10 grid place-items-center">
+              <div class="h-10 w-10 text-white rounded-2xl bg-slate-950/40 ring-1 ring-white/10 grid place-items-center">
                 <a :href="p.url" target="_blank" class="text-sm">↗</a>
               </div>
             </div>
@@ -281,13 +283,13 @@ const availability = [
               <span
                 v-for="t in p.tags"
                 :key="t"
-                class="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-200 ring-1 ring-white/10"
+                class="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700 ring-1 ring-white/10"
               >
                 {{ t }}
               </span>
             </div>
 
-            <ul class="mt-4 space-y-2 text-sm text-slate-200">
+            <ul class="mt-4 space-y-2 text-sm text-slate-700">
               <li v-for="(b, idx) in p.bullets" :key="idx" class="flex gap-2">
                 <span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-indigo-300"></span>
                 <span>{{ b }}</span>
@@ -298,7 +300,7 @@ const availability = [
               <a
                 :href="p.cta.href"
                 target="_blank"
-                class="inline-flex items-center gap-2 rounded-xl bg-indigo-500 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-400"
+                class="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-black hover:bg-indigo-500"
               >
                 {{ p.cta.label }}
                 <span aria-hidden="true">→</span>
@@ -311,23 +313,23 @@ const availability = [
       <!-- Experience -->
       <section class="mt-12 md:mt-16">
         <h3 class="text-2xl font-semibold tracking-tight">Experience</h3>
-        <p class="mt-1 text-sm text-slate-300">Remote + hybrid teams, production systems, performance and stability.</p>
+        <p class="mt-1 text-sm text-slate-600">Remote, production systems, performance and stability.</p>
 
         <div class="mt-6 space-y-5">
           <div
             v-for="(e, idx) in experience"
             :key="idx"
-            class="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10"
+            class="rounded-3xl bg-slate-100 p-6 ring-1 ring-white/10"
           >
             <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
               <div>
-                <p class="text-sm text-slate-300">{{ e.company }}</p>
+                <p class="text-sm text-slate-600">{{ e.company }}</p>
                 <h4 class="text-lg font-semibold">{{ e.title }}</h4>
               </div>
-              <p class="text-sm text-slate-300">{{ e.date }}</p>
+              <p class="text-sm text-slate-600">{{ e.date }}</p>
             </div>
 
-            <ul class="mt-4 space-y-2 text-sm text-slate-200">
+            <ul class="mt-4 space-y-2 text-sm text-slate-700">
               <li v-for="(b, bidx) in e.bullets" :key="bidx" class="flex gap-2">
                 <span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-emerald-300"></span>
                 <span>{{ b }}</span>
@@ -339,24 +341,24 @@ const availability = [
 
       <!-- Education -->
       <section class="mt-12 md:mt-16">
-        <div class="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
+        <div class="rounded-3xl bg-slate-100 p-6 ring-1 ring-white/10">
           <h3 class="text-2xl font-semibold tracking-tight">Education</h3>
-          <p class="mt-3 text-sm text-slate-300">{{ education.school }}</p>
+          <p class="mt-3 text-sm text-slate-600">{{ education.school }}</p>
           <p class="text-lg font-semibold">{{ education.degree }}</p>
-          <p class="mt-1 text-sm text-slate-300">{{ education.date }}</p>
+          <p class="mt-1 text-sm text-slate-600">{{ education.date }}</p>
 
           <div class="mt-4 rounded-2xl bg-slate-950/40 p-4 ring-1 ring-white/10">
-            <p class="text-xs text-slate-400">Thesis</p>
-            <p class="text-sm text-slate-200">{{ education.thesis }}</p>
+            <p class="text-xs text-slate-400 text-white">Thesis</p>
+            <p class="text-sm text-slate-700 text-white">{{ education.thesis }}</p>
           </div>
         </div>
       </section>
 
       <!-- CTA Footer -->
       <footer class="mt-12 md:mt-16">
-        <div class="rounded-3xl bg-gradient-to-r from-indigo-500/20 to-emerald-500/10 p-7 ring-1 ring-white/10">
+        <div class="rounded-3xl bg-gradient-to-r from-indigo-100 to-sky-100 p-7 ring-1 ring-white/10">
           <h3 class="text-2xl font-semibold tracking-tight">Let’s work together</h3>
-          <p class="mt-2 text-sm text-slate-200">
+          <p class="mt-2 text-sm text-slate-700">
             If you need a remote-first PHP developer who can deliver stable production work and modern UI, let’s talk.
           </p>
 
@@ -371,14 +373,14 @@ const availability = [
             <a
               :href="profile.linkedin"
               target="_blank"
-              class="inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-sm ring-1 ring-white/10 hover:bg-white/10"
+              class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm border border-slate-200 hover:bg-slate-200"
             >
               LinkedIn
             </a>
             <a
               :href="profile.github"
               target="_blank"
-              class="inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-sm ring-1 ring-white/10 hover:bg-white/10"
+              class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm border border-slate-200 hover:bg-slate-200"
             >
               GitHub
             </a>
