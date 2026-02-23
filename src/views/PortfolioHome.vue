@@ -1,20 +1,22 @@
 <script setup lang="ts">
 const profile = {
   name: "William Harry A. Dancel",
-  role: "PHP Developer | Remote-First",
+  role: "Full Stack PHP Developer | Remote-First",
   location: "San Pablo City, Laguna, Philippines (Open to Global Remote Work)",
   phone: "(+63) 998 256 7098",
   email: "william.a.dancel@gmail.com",
   github: "https://github.com/williamdancel",
   linkedin: "https://linkedin.com/in/william-harry-dancel-06516a231/",
+  badges: ['Laravel • Vue • Livewire • Tailwind CSS', '7+ yrs PHP Dev', 'Remote-ready'],
   summary:
-    "Remote-ready PHP Web Developer with 7+ years of experience working with distributed teams and international clients. Strong expertise in PHP (Laravel, CodeIgniter, CakePHP), REST APIs, and frontend technologies. Proven ability to maintain and enhance large-scale production systems, communicate effectively across time zones, and deliver results independently in fully remote environments.",
+    "Remote-ready Full Stack PHP Web Developer with 7+ years of experience working with distributed teams and international clients. Strong expertise in PHP (Laravel, CodeIgniter, CakePHP), REST APIs, and frontend technologies. Proven ability to maintain and enhance large-scale production systems, communicate effectively across time zones, and deliver results independently in fully remote environments.",
 };
 
+
 const skills = [
-  { group: "Backend", items: ["PHP 7.2+–8.3+", "Laravel 12", "NativePHP", "CodeIgniter 3", "CakePHP 4", "REST APIs"] },
+  { group: "Backend", items: ["PHP 7.2+–8.3+", "Laravel 12", "NativePHP", "CodeIgniter 3", "CakePHP 3", "REST APIs"] },
   { group: "Frontend", items: ["Vue 3", "Livewire", "JavaScript", "jQuery", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap CSS"] },
-  { group: "Data", items: ["MySQL", "PostgreSQL"] },
+  { group: "Database", items: ["MySQL", "PostgreSQL", "SQLite"] },
   { group: "Workflow", items: ["Git (GitHub/GitLab/Bitbucket)", "Remote Collaboration", "Cross-timezone communication"] },
 ];
 
@@ -32,8 +34,8 @@ type HighlightProject = {
 const highlights: HighlightProject[] = [
   {
     title: "CrowPOS",
-    subtitle: "CrowPOS is an offline-capable desktop POS. Simple and clean.",
-    tags: ["Laravel 12", "Vue 3", "Tailwind CSS"],
+    subtitle: "is an offline-capable desktop POS. Simple and clean.",
+    tags: ["Laravel 12", "Livewire", "Tailwind CSS"],
     bullets: [
       "Run Fast Checkouts",
       "Manage categories and items",
@@ -114,7 +116,7 @@ const experience = [
   },
   {
     company: "SLI Consulting",
-    title: "Mid Web Developer",
+    title: "Mid Web Developer (Contract) (Remote)",
     date: "Apr 2022 – Mar 2023",
     bullets: [
       "Revamped BeePays to Tinbo.ph",
@@ -124,7 +126,7 @@ const experience = [
   },
   {
     company: "Siegreich Solutions Inc.",
-    title: "Mid Web Developer",
+    title: "Mid Web Developer (On-site)",
     date: "May 2018 – Dec 2021",
     bullets: [
       "Team Lead developer for Tipsportal.com",
@@ -150,258 +152,246 @@ const availability = [
 
 <template>
   <div class="min-h-screen bg-slate-50 text-slate-900">
-    <!-- Top glow -->
-    <div class="pointer-events-none fixed inset-0 overflow-hidden">
-      <div class="absolute -top-32 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-indigo-200/60 blur-3xl" />
-      <div class="absolute top-40 right-[-8rem] h-72 w-72 rounded-full bg-sky-200/50 blur-3xl" />
-    </div>
+    <div class="mx-auto max-w-5xl px-6 py-12">
 
-    <!-- Container -->
-    <div class="relative mx-auto max-w-6xl px-6 py-10 md:py-14">
-      <!-- Header -->
-      <header class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div class="flex items-center gap-4">
-          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <img src="/images/profile.png" alt="Profile Picture" class="h-10 w-10 rounded-lg object-cover" />
-          </div>
-          <div>
-            <p class="text-sm text-slate-600">Portfolio</p>
-            <h1 class="text-xl font-semibold tracking-tight">{{ profile.name }}</h1>
-          </div>
-        </div>
+      <!-- PAPER -->
+      <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
 
-        <div class="flex flex-wrap gap-3">
-          <a
-            :href="profile.github"
-            target="_blank"
-            class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm border border-slate-200 hover:bg-slate-200"
-          >
-            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-            GitHub
-          </a>
-          <a
-            :href="profile.linkedin"
-            target="_blank"
-            class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm border border-slate-200 hover:bg-slate-200"
-          >
-            <span class="h-2 w-2 rounded-full bg-sky-400"></span>
-            LinkedIn
-          </a>
-          <a
-            :href="`mailto:${profile.email}`"
-            class="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500"
-          >
-            Contact
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </header>
+        <!-- subtle top accent -->
+        <div class="h-1 w-full bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500"></div>
 
-      <!-- Hero -->
-      <section class="mt-10 grid gap-8 md:mt-14 md:grid-cols-12">
-        <div class="md:col-span-7">
-          <div class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-xs text-slate-600 ring-1 ring-white/10">
-            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-            Remote-ready • 7+ years • Laravel + Vue
-          </div>
+        <div class="p-8 md:p-10">
 
-          <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
-            Building reliable PHP apps with a clean, modern UI.
-          </h2>
+          <!-- HEADER -->
+          <header class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
 
-          <p class="mt-4 text-slate-600 leading-relaxed">
-            {{ profile.summary }}
-          </p>
+              <!-- LEFT: NAME + ROLE -->
+              <div class="flex items-center gap-6">
 
-          <div class="mt-6 flex flex-wrap gap-3">
-            <div class="rounded-xl bg-slate-100 px-4 py-3 ring-1 ring-white/10">
-              <p class="text-xs text-slate-400">Role</p>
-              <p class="text-sm font-medium">{{ profile.role }}</p>
-            </div>
-            <div class="rounded-xl bg-slate-100 px-4 py-3 ring-1 ring-white/10">
-              <p class="text-xs text-slate-400">Location</p>
-              <p class="text-sm font-medium">{{ profile.location }}</p>
-            </div>
-          </div>
+                <!-- PROFILE IMAGE -->
+                <img
+                  src="/images/profile.png"
+                  alt="Profile"
+                  class="h-24 w-24 rounded-2xl object-cover border border-slate-200 shadow-sm"
+                />
 
-          <div class="mt-6 flex flex-wrap gap-3 text-sm text-slate-600">
-            <span class="rounded-lg bg-slate-100 px-3 py-2 ring-1 ring-white/10">📞 {{ profile.phone }}</span>
-            <span class="rounded-lg bg-slate-100 px-3 py-2 ring-1 ring-white/10">✉ {{ profile.email }}</span>
-          </div>
-        </div>
+                <div>
+                  <h1 class="text-3xl font-bold tracking-tight">
+                    {{ profile.name }}
+                  </h1>
 
-        <div class="md:col-span-5">
-          <div class="rounded-3xl bg-slate-100 p-6 ring-1 ring-white/10">
-            <h3 class="text-lg font-semibold">Core Skills</h3>
-            <p class="mt-1 text-sm text-slate-600">
-              Primary stack: <span class="text-black">Laravel 12 • Vue 3 • Tailwind</span>
-            </p>
+                  <p class="mt-2 text-slate-600">
+                    {{ profile.role }}
+                  </p>
 
-            <div class="mt-5 space-y-4">
-              <div v-for="s in skills" :key="s.group" class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-white/10">
-                <p class="text-sm font-medium text-white">{{ s.group }}</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span
-                    v-for="item in s.items"
-                    :key="item"
-                    class="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700 ring-1 ring-white/10"
-                  >
-                    {{ item }}
-                  </span>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span
+                      v-for="(b, idx) in profile.badges ?? []"
+                      :key="idx"
+                      class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700"
+                    >
+                      {{ b }}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="mt-5 rounded-3xl bg-gradient-to-b from-indigo-500/20 to-fuchsia-500/10 p-6 ring-1 ring-white/10">
-            <h3 class="text-lg font-semibold">Availability</h3>
-            <ul class="mt-3 space-y-2 text-sm text-slate-700">
-              <li v-for="(a, idx) in availability" :key="idx" class="flex gap-2">
-                <span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-emerald-400"></span>
-                <span>{{ a }}</span>
-              </li>
-            </ul>
+  <!-- RIGHT: CONTACT + BUTTONS -->
+  <div class="flex flex-col items-start gap-3 md:items-end">
+
+    <div class="text-sm text-slate-600 text-left md:text-right">
+      <p>{{ profile.location }}</p>
+      <a :href="`mailto:${profile.email}`" class="hover:underline">
+        {{ profile.email }}
+      </a>
+    </div>
+
+    <div class="flex gap-3">
+      <a
+        :href="profile.github"
+        target="_blank"
+        class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700"
+      >
+        GitHub
+      </a>
+
+      <a
+        :href="profile.linkedin"
+        target="_blank"
+        class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-blue-500 text-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-400"
+      >
+        LinkedIn
+      </a>
+    </div>
+
+  </div>
+</header>
+
+          <!-- SUMMARY -->
+          <section class="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-6">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
+              Profile
+            </h2>
+            <p class="mt-3 text-slate-700 leading-relaxed">
+              {{ profile.summary }}
+            </p>
+          </section>
+
+          <!-- GRID -->
+          <div class="mt-10 grid gap-10 md:grid-cols-3">
+
+            <!-- LEFT -->
+            <aside class="md:col-span-1 space-y-10">
+
+              <!-- SKILLS -->
+              <section>
+                <div class="flex items-center gap-3">
+                  <div class="h-6 w-1 rounded-full bg-indigo-500"></div>
+                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                    Skills
+                  </h2>
+                </div>
+
+                <div class="mt-4 space-y-5">
+                  <div v-for="s in skills" :key="s.group">
+                    <p class="text-sm font-semibold text-slate-800">{{ s.group }}</p>
+
+                    <div class="mt-2 flex flex-wrap gap-2">
+                      <span
+                        v-for="(item, idx) in s.items"
+                        :key="idx"
+                        class="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-700"
+                      >
+                        {{ item }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- EDUCATION -->
+              <section>
+                <div class="flex items-center gap-3">
+                  <div class="h-6 w-1 rounded-full bg-sky-500"></div>
+                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                    Education
+                  </h2>
+                </div>
+
+                <div class="mt-4">
+                  <p class="font-semibold text-slate-800">{{ education.degree }}</p>
+                  <p class="text-sm text-slate-600">{{ education.school }}</p>
+                  <p class="text-xs text-slate-500 mt-1">{{ education.date }}</p>
+
+                  <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                    <span class="font-medium text-slate-700">Thesis:</span>
+                    {{ education.thesis }}
+                  </p>
+                </div>
+              </section>
+
+              <!-- AVAILABILITY -->
+              <section>
+                <div class="flex items-center gap-3">
+                  <div class="h-6 w-1 rounded-full bg-emerald-500"></div>
+                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                    Availability
+                  </h2>
+                </div>
+
+                <ul class="mt-4 space-y-2 text-sm text-slate-700">
+                  <li v-for="(a, idx) in availability" :key="idx" class="flex gap-2">
+                    <span class="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400"></span>
+                    <span>{{ a }}</span>
+                  </li>
+                </ul>
+              </section>
+            </aside>
+
+            <!-- RIGHT -->
+            <main class="md:col-span-2 space-y-12">
+
+              <!-- PROJECTS -->
+              <section>
+                <div class="flex items-center gap-3">
+                  <div class="h-6 w-1 rounded-full bg-sky-500"></div>
+                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                    Selected Projects
+                  </h2>
+                </div>
+
+                <div class="mt-6 grid gap-4">
+                  <div
+                    v-for="p in highlights"
+                    :key="p.title"
+                    class="rounded-xl border border-slate-200 bg-white p-5 transition hover:shadow-sm"
+                  >
+                    <div class="flex items-start justify-between gap-4">
+                      <div>
+                        <p class="font-semibold text-slate-900">{{ p.title }}</p>
+                        <p class="text-sm text-slate-600">{{ p.subtitle }}</p>
+                        <p class="mt-2 text-xs text-slate-500">
+                          {{ p.tags.join(' • ') }}
+                        </p>
+                      </div>
+
+                      <a
+                        :href="p.url"
+                        target="_blank"
+                        class="shrink-0 rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                      >
+                        View
+                      </a>
+                    </div>
+
+                    <ul class="mt-4 space-y-2 text-sm text-slate-700">
+                      <li v-for="(b, idx) in p.bullets" :key="idx" class="flex gap-2">
+                        <span class="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400"></span>
+                        <span>{{ b }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <!-- EXPERIENCE -->
+              <section>
+                <div class="flex items-center gap-3">
+                  <div class="h-6 w-1 rounded-full bg-indigo-500"></div>
+                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                    Experience
+                  </h2>
+                </div>
+
+                <div class="mt-6 space-y-8">
+                  <div v-for="(e, idx) in experience" :key="idx" class="relative pl-6">
+                    <!-- timeline dot -->
+                    <div class="absolute left-0 top-2 h-3 w-3 rounded-full bg-indigo-500"></div>
+                    <!-- timeline line -->
+                    <div class="absolute left-[5px] top-6 h-[calc(100%-1rem)] w-px bg-slate-200"></div>
+
+                    <div class="flex items-start justify-between gap-4">
+                      <div>
+                        <p class="font-semibold text-slate-900">{{ e.title }}</p>
+                        <p class="text-sm text-slate-600">{{ e.company }}</p>
+                      </div>
+                      <p class="text-xs text-slate-500 whitespace-nowrap">{{ e.date }}</p>
+                    </div>
+
+                    <ul class="mt-3 space-y-2 text-sm text-slate-700">
+                      <li v-for="(b, bidx) in e.bullets" :key="bidx" class="flex gap-2">
+                        <span class="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400"></span>
+                        <span>{{ b }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </main>
+
           </div>
         </div>
-      </section>
-
-      <!-- Projects -->
-      <section class="mt-12 md:mt-16">
-        <div class="flex items-end justify-between gap-4">
-          <div>
-            <h3 class="text-2xl font-semibold tracking-tight">Highlighted Projects</h3>
-            <p class="mt-1 text-sm text-slate-600">Production-focused work with admin dashboards, APIs, and real users.</p>
-          </div>
-        </div>
-
-        <div class="mt-6 grid gap-5 md:grid-cols-3">
-          <article
-            v-for="p in highlights"
-            :key="p.title"
-            class="group rounded-3xl bg-slate-100 p-6 ring-1 ring-white/10 transition hover:bg-white/10"
-          >
-            <div class="flex items-start justify-between gap-3">
-              <div>
-                <h4 class="text-lg font-semibold">{{ p.title }}</h4>
-                <p class="mt-1 text-sm text-slate-600">{{ p.subtitle }}</p>
-              </div>
-              <div class="h-10 w-10 text-white rounded-2xl bg-slate-950/40 ring-1 ring-white/10 grid place-items-center">
-                <a :href="p.url" target="_blank" class="text-sm">↗</a>
-              </div>
-            </div>
-
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span
-                v-for="t in p.tags"
-                :key="t"
-                class="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700 ring-1 ring-white/10"
-              >
-                {{ t }}
-              </span>
-            </div>
-
-            <ul class="mt-4 space-y-2 text-sm text-slate-700">
-              <li v-for="(b, idx) in p.bullets" :key="idx" class="flex gap-2">
-                <span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-indigo-300"></span>
-                <span>{{ b }}</span>
-              </li>
-            </ul>
-
-            <div v-if="p.cta" class="mt-5">
-              <a
-                :href="p.cta.href"
-                target="_blank"
-                class="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-black hover:bg-indigo-500"
-              >
-                {{ p.cta.label }}
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Experience -->
-      <section class="mt-12 md:mt-16">
-        <h3 class="text-2xl font-semibold tracking-tight">Experience</h3>
-        <p class="mt-1 text-sm text-slate-600">Remote, production systems, performance and stability.</p>
-
-        <div class="mt-6 space-y-5">
-          <div
-            v-for="(e, idx) in experience"
-            :key="idx"
-            class="rounded-3xl bg-slate-100 p-6 ring-1 ring-white/10"
-          >
-            <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-              <div>
-                <p class="text-sm text-slate-600">{{ e.company }}</p>
-                <h4 class="text-lg font-semibold">{{ e.title }}</h4>
-              </div>
-              <p class="text-sm text-slate-600">{{ e.date }}</p>
-            </div>
-
-            <ul class="mt-4 space-y-2 text-sm text-slate-700">
-              <li v-for="(b, bidx) in e.bullets" :key="bidx" class="flex gap-2">
-                <span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-emerald-300"></span>
-                <span>{{ b }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Education -->
-      <section class="mt-12 md:mt-16">
-        <div class="rounded-3xl bg-slate-100 p-6 ring-1 ring-white/10">
-          <h3 class="text-2xl font-semibold tracking-tight">Education</h3>
-          <p class="mt-3 text-sm text-slate-600">{{ education.school }}</p>
-          <p class="text-lg font-semibold">{{ education.degree }}</p>
-          <p class="mt-1 text-sm text-slate-600">{{ education.date }}</p>
-
-          <div class="mt-4 rounded-2xl bg-slate-950/40 p-4 ring-1 ring-white/10">
-            <p class="text-xs text-slate-400 text-white">Thesis</p>
-            <p class="text-sm text-slate-700 text-white">{{ education.thesis }}</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA Footer -->
-      <footer class="mt-12 md:mt-16">
-        <div class="rounded-3xl bg-gradient-to-r from-indigo-100 to-sky-100 p-7 ring-1 ring-white/10">
-          <h3 class="text-2xl font-semibold tracking-tight">Let’s work together</h3>
-          <p class="mt-2 text-sm text-slate-700">
-            If you need a remote-first PHP developer who can deliver stable production work and modern UI, let’s talk.
-          </p>
-
-          <div class="mt-5 flex flex-wrap gap-3">
-            <a
-              :href="`mailto:${profile.email}`"
-              class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-slate-200"
-            >
-              Email me
-              <span aria-hidden="true">→</span>
-            </a>
-            <a
-              :href="profile.linkedin"
-              target="_blank"
-              class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm border border-slate-200 hover:bg-slate-200"
-            >
-              LinkedIn
-            </a>
-            <a
-              :href="profile.github"
-              target="_blank"
-              class="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-sm border border-slate-200 hover:bg-slate-200"
-            >
-              GitHub
-            </a>
-          </div>
-        </div>
-
-        <p class="mt-6 text-center text-xs text-slate-500">
-          © {{ new Date().getFullYear() }} {{ profile.name }} • Built with Laravel + Vue + Tailwind
-        </p>
-      </footer>
+      </div>
     </div>
   </div>
 </template>
