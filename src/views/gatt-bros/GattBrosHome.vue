@@ -409,7 +409,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, watch, reactive } from "vue";
 
 const isLoading = ref(true);
@@ -433,11 +433,6 @@ const mobileOpen = ref(false);
 function toggleMobile() {
   mobileOpen.value = !mobileOpen.value;
 }
-
-function closeMobile() {
-  mobileOpen.value = false;
-}
-
 
 const phoneDisplay = "1300 GATT BROS";
 const phoneAlt = "0412 096 080";
@@ -522,7 +517,7 @@ const form = reactive({
 
 const toast = ref("");
 
-function scrollTo(id) {
+function scrollTo(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
   el.scrollIntoView({ behavior: "smooth", block: "start" });
