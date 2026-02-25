@@ -5,6 +5,8 @@ const Crowpos = () => import('../views/crowpos/CrowPos.vue')
 const Makagago = () => import('../views/mgwm/MakagagoHome.vue')
 const Eifl = () => import('../views/eifl-lending/EIFLHome.vue')
 const GattBros = () => import('../views/gatt-bros/GattBrosHome.vue')
+const WhiteLineTransport = () => import('../views/whiteline/WhiteLineTransportHome.vue')
+const WhiteLineRacing = () => import('../views/whiteline/WhiteLineRacingHome.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -52,6 +54,24 @@ const router = createRouter({
       meta: {
         title: 'Gatt Bros - Website Proposal',
         favicon: '/favicon/gatt-bros/favicon.ico' // Gatt Bros favicon
+      }
+    },
+    {
+      path: '/whiteline-transport',
+      name: 'whiteline-transport',
+      component: WhiteLineTransport,
+      meta: {
+        title: 'WhiteLine Transport - Website Proposal',
+        favicon: '/favicon/white-line-transport/favicon.ico' // White Line Transport favicon
+      }
+    },
+    {
+      path: '/whiteline-racing',
+      name: 'whiteline-racing',
+      component: WhiteLineRacing,
+      meta: {
+        title: 'WhiteLine Racing - Website Proposal',
+        favicon: '/favicon/white-line-racing/favicon.ico' // White Line Racing favicon
       }
     }
   ]
