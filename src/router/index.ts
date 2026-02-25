@@ -4,6 +4,7 @@ const Home = () => import('../views/PortfolioHome.vue')
 const Crowpos = () => import('../views/crowpos/CrowPos.vue')
 const Makagago = () => import('../views/mgwm/MakagagoHome.vue')
 const Eifl = () => import('../views/eifl-lending/EIFLHome.vue')
+const GattBros = () => import('../views/gatt-bros/GattBrosHome.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -42,6 +43,15 @@ const router = createRouter({
       meta: {
         title: 'EIFL Lending - Website Proposal',
         favicon: '/favicon/eifl-lending/favicon.ico' // EIFL Lending favicon
+      }
+    },
+    {
+      path: '/gatt-bros',
+      name: 'gatt-bros',
+      component: GattBros,
+      meta: {
+        title: 'Gatt Bros - Website Proposal',
+        favicon: '/favicon/gatt-bros/favicon.ico' // Gatt Bros favicon
       }
     }
   ]
