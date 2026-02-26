@@ -79,7 +79,7 @@ const router = createRouter({
       name: 'lilydale-freighters',
       component: LilyDaleFreighters,
       meta: {
-        title: 'Lily Dale Freighters - Website Proposal',
+        title: 'Lilydale Freighters - Website Proposal',
         favicon: '/favicon/lily-dale-freighters/favicon.ico' // Lily Dale Freighters favicon
       }
     }
