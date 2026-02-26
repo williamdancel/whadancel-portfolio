@@ -7,6 +7,7 @@ const Eifl = () => import('../views/eifl-lending/EIFLHome.vue')
 const GattBros = () => import('../views/gatt-bros/GattBrosHome.vue')
 const WhiteLineTransport = () => import('../views/whiteline/WhiteLineTransportHome.vue')
 const WhiteLineRacing = () => import('../views/whiteline/WhiteLineRacingHome.vue')
+const LilyDaleFreighters = () => import('../views/lilydale/LilyDaleFreightersHome.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -72,6 +73,14 @@ const router = createRouter({
       meta: {
         title: 'WhiteLine Racing - Website Proposal',
         favicon: '/favicon/white-line-racing/favicon.ico' // White Line Racing favicon
+      }
+    },{
+      path: '/lily-dale-freighters',
+      name: 'lily-dale-freighters',
+      component: LilyDaleFreighters,
+      meta: {
+        title: 'Lily Dale Freighters - Website Proposal',
+        favicon: '/favicon/lily-dale-freighters/favicon.ico' // Lily Dale Freighters favicon
       }
     }
   ]
