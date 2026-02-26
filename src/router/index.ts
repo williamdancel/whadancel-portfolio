@@ -75,8 +75,8 @@ const router = createRouter({
         favicon: '/favicon/white-line-racing/favicon.ico' // White Line Racing favicon
       }
     },{
-      path: '/lily-dale-freighters',
-      name: 'lily-dale-freighters',
+      path: '/lilydale-freighters',
+      name: 'lilydale-freighters',
       component: LilyDaleFreighters,
       meta: {
         title: 'Lily Dale Freighters - Website Proposal',

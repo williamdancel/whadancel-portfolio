@@ -444,8 +444,8 @@
           </p>
 
           <div class="social">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="https://www.facebook.com/profile.php?id=61566388207839" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/lilydalefreighters/" aria-label="LinkedIn">in</a>
             <a href="#" aria-label="Email">✉</a>
           </div>
         </div>
@@ -872,15 +872,24 @@ a {
 
 /* ===== Hero ===== */
 .hero {
-  padding-top: 66px;
-  background: linear-gradient(180deg, #fff 0%, #fff 65%, rgba(240, 90, 0, 0.06) 100%);
+  min-height: 86vh;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 60%,
+    rgba(0, 136, 186, 0.06) 100%
+  );
 }
-
 .heroGrid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 38px;
   align-items: center;
+  margin-bottom:6rem;
 }
 
 .pill {
