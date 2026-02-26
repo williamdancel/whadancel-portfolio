@@ -872,7 +872,7 @@ a {
 
 /* ===== Hero ===== */
 .hero {
-  min-height: 86vh;
+  min-height: 95vh;
   display: flex;
   align-items: center;
   padding-top: 0;
