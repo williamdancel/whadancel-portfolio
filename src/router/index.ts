@@ -8,6 +8,7 @@ const GattBros = () => import('../views/gatt-bros/GattBrosHome.vue')
 const WhiteLineTransport = () => import('../views/whiteline/WhiteLineTransportHome.vue')
 const WhiteLineRacing = () => import('../views/whiteline/WhiteLineRacingHome.vue')
 const LilyDaleFreighters = () => import('../views/lilydale/LilyDaleFreightersHome.vue')
+const StateWideCarCarriers = () => import('../views/statewide-car-carriers/StateWideCarCarriersHome.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -81,6 +82,14 @@ const router = createRouter({
       meta: {
         title: 'Lilydale Freighters - Website Proposal',
         favicon: '/favicon/lily-dale-freighters/favicon.ico' // Lily Dale Freighters favicon
+      }
+    },{
+      path: '/statewide-car-carriers',
+      name: 'statewide-car-carriers',
+      component: StateWideCarCarriers,
+      meta: {
+        title: 'Statewide Car Carriers - Website Proposal',
+        favicon: '/favicon/state-wide-car-carriers/favicon.ico' // State Wide Car Carriers favicon
       }
     }
   ]
