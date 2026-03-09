@@ -35,7 +35,7 @@ const highlights: HighlightProject[] = [
   {
     title: "CrowPOS",
     subtitle: "is an offline-capable desktop POS. Simple and clean.",
-    tags: ["Laravel 12", "Livewire", "Tailwind CSS"],
+    tags: ["Laravel 12", "Livewire", "Tailwind CSS", "Native PHP (Desktop App)"],
     bullets: [
       "Run Fast Checkouts",
       "Manage categories and items",
