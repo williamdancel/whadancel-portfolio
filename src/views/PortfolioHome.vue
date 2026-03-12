@@ -9,7 +9,7 @@ const profile = {
   linkedin: "https://linkedin.com/in/william-harry-dancel-06516a231/",
   badges: ['Laravel • Vue • Livewire • Tailwind CSS', '7+ yrs PHP Dev', 'Remote-ready'],
   summary:
-    "Remote-ready Full Stack PHP Web Developer with 7+ years of experience working with distributed teams and international clients. Strong expertise in PHP (Laravel, CodeIgniter, CakePHP), REST APIs, and frontend technologies. Proven ability to maintain and enhance large-scale production systems, communicate effectively across time zones, and deliver results independently in fully remote environments.",
+    "Full Stack PHP Web Developer with 7+ years of experience working with distributed teams and international clients. Strong expertise in PHP (Laravel, CodeIgniter, CakePHP), REST APIs, and frontend technologies (VueJS, Tailwind CSS, Bootstrap CSS, Jquery, Javascript). Proven ability to maintain and enhance large-scale production systems, communicate effectively across time zones, and deliver results independently in fully remote/hybrid/onsite environments.",
 };
 
 
