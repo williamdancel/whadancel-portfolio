@@ -29,21 +29,10 @@ type HighlightProject = {
   bullets: string[];
   url: string;
   cta: ProjectCta;
+  image: string;
 };
 
 const highlights: HighlightProject[] = [
-  {
-    title: "CrowPOS",
-    subtitle: "is an offline-capable desktop POS. Simple and clean.",
-    tags: ["Laravel 12", "Livewire", "Tailwind CSS", "Native PHP (Desktop App)"],
-    bullets: [
-      "Run Fast Checkouts",
-      "Manage categories and items",
-      "View Sales Reports",
-    ],
-    url: "https://www.whadancel.dev/crowpos",
-    cta: null, 
-  },
   {
     title: "kukuys.live",
     subtitle: "Freelance website for Kukuys Streamer Group (Dota 2 Pros)",
@@ -55,6 +44,20 @@ const highlights: HighlightProject[] = [
     ],
     url: "https://kukuys.live",
     cta: null, 
+    image: "/images/highlighted-projects/kukuys.png", 
+  },
+  {
+    title: "CrowPOS",
+    subtitle: "is an offline-capable desktop POS. Simple and clean.",
+    tags: ["Laravel 12", "Livewire", "Tailwind CSS", "Native PHP (Desktop App)"],
+    bullets: [
+      "Run Fast Checkouts",
+      "Manage categories and items",
+      "View Sales Reports",
+    ],
+    url: "https://www.whadancel.dev/crowpos",
+    cta: null,
+    image: "/images/highlighted-projects/crowPOS.png", 
   },
   {
     title: "Tinbo.ph",
@@ -67,6 +70,7 @@ const highlights: HighlightProject[] = [
     ],
     url: "https://tinbo.ph",
     cta: null,
+    image: "/images/highlighted-projects/tinbo.png", 
   },
   {
     title: "Tipsportal.com",
@@ -79,6 +83,7 @@ const highlights: HighlightProject[] = [
     ],
     url: "https://web.archive.org/web/20201201231927/https://tipsportal.com/", // archived link
     cta: null,
+    image: "/images/highlighted-projects/tipsportal.png", 
   },
 ];
 
@@ -324,32 +329,43 @@ const availability = [
                   <div
                     v-for="p in highlights"
                     :key="p.title"
-                    class="rounded-xl border border-slate-200 bg-white p-5 transition hover:shadow-sm"
+                    class="overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:shadow-sm"
                   >
-                    <div class="flex items-start justify-between gap-4">
-                      <div>
-                        <p class="font-semibold text-slate-900">{{ p.title }}</p>
-                        <p class="text-sm text-slate-600">{{ p.subtitle }}</p>
-                        <p class="mt-2 text-xs text-slate-500">
-                          {{ p.tags.join(' • ') }}
-                        </p>
+                    <!-- PROJECT IMAGE -->
+                    <a :href="p.url" target="_blank" class="block">
+                      <img
+                        :src="p.image"
+                        :alt="`${p.title} preview`"
+                        class="h-52 w-full object-cover"
+                      />
+                    </a>
+
+                    <div class="p-5">
+                      <div class="flex items-start justify-between gap-4">
+                        <div>
+                          <p class="font-semibold text-slate-900">{{ p.title }}</p>
+                          <p class="text-sm text-slate-600">{{ p.subtitle }}</p>
+                          <p class="mt-2 text-xs text-slate-500">
+                            {{ p.tags.join(' • ') }}
+                          </p>
+                        </div>
+
+                        <a
+                          :href="p.url"
+                          target="_blank"
+                          class="shrink-0 rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                        >
+                          View
+                        </a>
                       </div>
 
-                      <a
-                        :href="p.url"
-                        target="_blank"
-                        class="shrink-0 rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
-                      >
-                        View
-                      </a>
+                      <ul class="mt-4 space-y-2 text-sm text-slate-700">
+                        <li v-for="(b, idx) in p.bullets" :key="idx" class="flex gap-2">
+                          <span class="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400"></span>
+                          <span>{{ b }}</span>
+                        </li>
+                      </ul>
                     </div>
-
-                    <ul class="mt-4 space-y-2 text-sm text-slate-700">
-                      <li v-for="(b, idx) in p.bullets" :key="idx" class="flex gap-2">
-                        <span class="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400"></span>
-                        <span>{{ b }}</span>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </section>
