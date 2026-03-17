@@ -15,7 +15,7 @@ const profile = {
 
 const skills = [
   { group: "Backend", items: ["PHP 7.2+–8.3+", "Laravel 12", "NativePHP", "CodeIgniter 3", "CakePHP 3", "REST APIs"] },
-  { group: "Frontend", items: ["Vue 3", "Livewire", "JavaScript", "jQuery", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap CSS"] },
+  { group: "Frontend", items: ["Vue 3", "Livewire", "Javascripts", "jQuery", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap CSS"] },
   { group: "Database", items: ["MySQL", "PostgreSQL", "SQLite"] },
   { group: "Workflow", items: ["Git (GitHub/GitLab/Bitbucket)", "Remote Collaboration", "Cross-timezone communication"] },
 ];
