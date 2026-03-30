@@ -34,6 +34,19 @@ type HighlightProject = {
 
 const highlights: HighlightProject[] = [
   {
+    title: "Tinbo.ph",
+    subtitle: "OFW digital services platform (Payments, Bills, Virtual Numbers)",
+    tags: ["CodeIgniter 3", "jQuery", "Bootstrap CSS"],
+    bullets: [
+      "Maintained and enhanced production platform features",
+      "Worked in a distributed setup with backend microservices team",
+      "Focused on reliability and long-term stability",
+    ],
+    url: "https://tinbo.ph",
+    cta: null,
+    image: "/images/highlighted-projects/tinbo.png", 
+  },
+  {
     title: "kukuys.live",
     subtitle: "Freelance website for Kukuys Streamer Group (Dota 2 Pros)",
     tags: ["Laravel 12", "Vue 3", "Tailwind CSS"],
@@ -60,25 +73,12 @@ const highlights: HighlightProject[] = [
     image: "/images/highlighted-projects/crowPOS.png", 
   },
   {
-    title: "Tinbo.ph",
-    subtitle: "OFW digital services platform (Payments, Bills, Virtual Numbers)",
-    tags: ["CodeIgniter 3", "jQuery", "Bootstrap CSS"],
-    bullets: [
-      "Maintained and enhanced production platform features",
-      "Worked in a distributed setup with backend microservices team",
-      "Focused on reliability and long-term stability",
-    ],
-    url: "https://tinbo.ph",
-    cta: null,
-    image: "/images/highlighted-projects/tinbo.png", 
-  },
-  {
     title: "Tipsportal.com",
     subtitle: "Multi-language sports free tips / betting portal with backoffice",
     tags: ["CodeIgniter 3", "jQuery", "Bootstrap"],
     bullets: [
       "Built and maintained backoffice workflows",
-      "Integrated third-party APIs and payment gateways",
+      "Integrated third-party APIs (sportmonks)",
       "Supported multi-content + multi-language delivery",
     ],
     url: "https://web.archive.org/web/20201201231927/https://tipsportal.com/", // archived link
