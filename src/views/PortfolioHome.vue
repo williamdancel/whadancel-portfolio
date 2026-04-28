@@ -1,38 +1,147 @@
-<script setup lang="ts">
+<template>
+  <div class="portfolio">
+    <!-- Hero Section with Contact Info -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="avatar">
+          <img src="/images/profile.png" alt="Profile">
+        </div>
+        <h1>{{ profile.name }}</h1>
+        <p class="role">{{ profile.role }}</p>
+        <p class="location">{{ profile.location }}</p>
+        <div class="contact-bar">
+          <a :href="`mailto:${profile.email}`" class="contact-link">📧 {{ profile.email }}</a>
+          <span class="contact-link">📞 {{ profile.phone }}</span>
+        </div>
+        <div class="badges">
+          <span v-for="badge in profile.badges" :key="badge" class="badge">{{ badge }}</span>
+        </div>
+        <div class="social-links">
+          <a :href="profile.github" target="_blank" class="social-btn">GitHub</a>
+          <a :href="profile.linkedin" target="_blank" class="social-btn">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section class="summary">
+      <div class="container">
+        <h2>Professional Summary</h2>
+        <p>{{ profile.summary }}</p>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+      <div class="container">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div v-for="skill in skills" :key="skill.group" class="skill-group">
+            <h3>{{ skill.group }}</h3>
+            <div class="skill-tags">
+              <span v-for="item in skill.items" :key="item" class="skill-tag">{{ item }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="projects">
+      <div class="container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+          <div v-for="project in highlights" :key="project.title" class="project-card">
+            <div class="project-image" :style="{ backgroundImage: 'url(' + project.image + ')' }"></div>
+            <div class="project-content">
+              <h3>{{ project.title }}</h3>
+              <p class="project-subtitle">{{ project.subtitle }}</p>
+              <div class="project-tags">
+                <span v-for="tag in project.tags" :key="tag" class="project-tag">{{ tag }}</span>
+              </div>
+              <ul class="project-bullets">
+                <li v-for="bullet in project.bullets" :key="bullet">{{ bullet }}</li>
+              </ul>
+              <a :href="project.url" target="_blank" class="project-link">View Project →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="experience">
+      <div class="container">
+        <h2>Work Experience</h2>
+        <div class="timeline">
+          <div v-for="job in experience" :key="job.company + job.date" class="timeline-item">
+            <div class="timeline-left">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="job-header">
+                <h3>{{ job.title }}</h3>
+                <span class="job-date">{{ job.date }}</span>
+              </div>
+              <p class="job-company">{{ job.company }}</p>
+              <ul>
+                <li v-for="bullet in job.bullets" :key="bullet">{{ bullet }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Availability -->
+    <section class="info-grid">
+      <div class="container">
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>🎓 Education</h3>
+            <p class="degree">{{ education.degree }}</p>
+            <p class="school">{{ education.school }}</p>
+            <p class="date">{{ education.date }}</p>
+            <p class="thesis"><strong>Thesis:</strong> {{ education.thesis }}</p>
+          </div>
+          <div class="info-card">
+            <h3>✅ Availability</h3>
+            <ul>
+              <li v-for="item in availability" :key="item">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© {{ new Date().getFullYear() }} William Harry A. Dancel | Full Stack PHP Developer</p>
+    </footer>
+  </div>
+</template>
+
+<script setup>
 const profile = {
   name: "William Harry A. Dancel",
-  role: "Full Stack PHP Developer | Remote-First",
+  role: "Full Stack PHP Developer",
   location: "San Pablo City, Laguna, Philippines (Open to Global Remote Work)",
   phone: "(+63) 998 256 7098",
   email: "william.a.dancel@gmail.com",
   github: "https://github.com/williamdancel",
   linkedin: "https://linkedin.com/in/william-harry-dancel-06516a231/",
-  badges: ['Laravel • Vue • Livewire • Tailwind CSS', '7+ yrs PHP Dev', 'Remote-ready'],
-  summary:
-    "Full Stack PHP Web Developer with 7+ years of experience working with distributed teams and international clients. Strong expertise in PHP (Laravel, CodeIgniter, CakePHP), REST APIs, and frontend technologies (VueJS, Tailwind CSS, Bootstrap CSS, Jquery, Javascript). Proven ability to maintain and enhance large-scale production systems, communicate effectively across time zones, and deliver results independently in fully remote/hybrid/onsite environments.",
+  badges: ['• Laravel • Codeigniter • VueJS • JQuery' , '7+ yrs PHP Dev', 'Remote-ready'],
+  summary: "Full Stack PHP Web Developer with 7+ years of experience working with distributed teams and international clients. Strong expertise in PHP (Laravel, CodeIgniter, CakePHP), REST APIs, and frontend technologies (VueJS, Tailwind CSS, Bootstrap CSS, Jquery, Javascript). Proven ability to maintain and enhance large-scale production systems, communicate effectively across time zones, and deliver results independently in fully remote/hybrid/onsite environments.",
 };
-
 
 const skills = [
-  { group: "Backend", items: ["PHP 7.2+–8.3+", "Laravel 12", "NativePHP", "CodeIgniter 3", "CakePHP 3", "REST APIs"] },
-  { group: "Frontend", items: ["Vue 3", "Livewire", "Javascripts", "jQuery", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap CSS"] },
+  { group: "Backend", items: ["PHP 7.2+–8.3+", "Laravel 12", "NativePHP", "CodeIgniter 3", "CakePHP 3", "Livewire", "REST APIs"] },
+  { group: "Frontend", items: ["Vue 3", "Javascript", "jQuery", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap CSS"] },
   { group: "Database", items: ["MySQL", "PostgreSQL", "SQLite"] },
-  { group: "Workflow", items: ["Git (GitHub/GitLab/Bitbucket)", "Remote Collaboration", "Cross-timezone communication"] },
+  { group: "Workflow", items: ["Docker", "Git (GitHub/GitLab/Bitbucket)", "Remote Collaboration", "Cross-timezone communication"] },
 ];
 
-type ProjectCta = { label: string; href: string } | null;
-
-type HighlightProject = {
-  title: string;
-  subtitle: string;
-  tags: string[];
-  bullets: string[];
-  url: string;
-  cta: ProjectCta;
-  image: string;
-};
-
-const highlights: HighlightProject[] = [
+const highlights = [
   {
     title: "Tinbo.ph",
     subtitle: "OFW digital services platform (Payments, Bills, Virtual Numbers)",
@@ -43,8 +152,19 @@ const highlights: HighlightProject[] = [
       "Focused on reliability and long-term stability",
     ],
     url: "https://tinbo.ph",
-    cta: null,
-    image: "/images/highlighted-projects/tinbo.png", 
+    image: "/images/highlighted-projects/tinbo.png",
+  },
+  {
+    title: "CrowPOS",
+    subtitle: "Offline-capable desktop POS. Simple and clean.",
+    tags: ["Laravel 12", "Livewire", "Tailwind CSS", "NativePHP (Desktop App)"],
+    bullets: [
+      "Run Fast Checkouts",
+      "Manage categories and items",
+      "View Sales Reports",
+    ],
+    url: "https://www.whadancel.dev/crowpos",
+    image: "/images/highlighted-projects/crowPOS.png",
   },
   {
     title: "kukuys.live",
@@ -56,21 +176,7 @@ const highlights: HighlightProject[] = [
       "Partner Enquiries module",
     ],
     url: "https://kukuys.live",
-    cta: null, 
-    image: "/images/highlighted-projects/kukuys.png", 
-  },
-  {
-    title: "CrowPOS",
-    subtitle: "is an offline-capable desktop POS. Simple and clean.",
-    tags: ["Laravel 12", "Livewire", "Tailwind CSS", "Native PHP (Desktop App)"],
-    bullets: [
-      "Run Fast Checkouts",
-      "Manage categories and items",
-      "View Sales Reports",
-    ],
-    url: "https://www.whadancel.dev/crowpos",
-    cta: null,
-    image: "/images/highlighted-projects/crowPOS.png", 
+    image: "/images/highlighted-projects/kukuys.png",
   },
   {
     title: "Tipsportal.com",
@@ -81,9 +187,8 @@ const highlights: HighlightProject[] = [
       "Integrated third-party APIs (sportmonks)",
       "Supported multi-content + multi-language delivery",
     ],
-    url: "https://web.archive.org/web/20201201231927/https://tipsportal.com/", // archived link
-    cta: null,
-    image: "/images/highlighted-projects/tipsportal.png", 
+    url: "https://web.archive.org/web/20201201231927/https://tipsportal.com/",
+    image: "/images/highlighted-projects/tipsportal.png",
   },
 ];
 
@@ -155,259 +260,484 @@ const availability = [
 ];
 </script>
 
-<template>
-  <div class="min-h-screen bg-slate-50 text-slate-900">
-    <div class="mx-auto max-w-5xl px-6 py-12">
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-      <!-- PAPER -->
-      <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+.portfolio {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #1e293b;
+  background: #f8fafc;
+}
 
-        <!-- subtle top accent -->
-        <div class="h-1 w-full bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500"></div>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-        <div class="p-8 md:p-10">
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4f46e5 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
 
-          <!-- HEADER -->
-          <header class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid rgba(255,255,255,0.3);
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+}
 
-              <!-- LEFT: NAME + ROLE -->
-              <div class="flex items-center gap-6">
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-                <!-- PROFILE IMAGE -->
-                <img
-                  src="/images/profile.png"
-                  alt="Profile"
-                  class="h-24 w-24 rounded-2xl object-cover border border-slate-200 shadow-sm"
-                />
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
 
-                <div>
-                  <h1 class="text-3xl font-bold tracking-tight">
-                    {{ profile.name }}
-                  </h1>
+.role {
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.95;
+  margin-bottom: 8px;
+}
 
-                  <p class="mt-2 text-slate-600">
-                    {{ profile.role }}
-                  </p>
+.location {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
 
-                  <div class="mt-3 flex flex-wrap gap-2">
-                    <span
-                      v-for="(b, idx) in profile.badges ?? []"
-                      :key="idx"
-                      class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700"
-                    >
-                      {{ b }}
-                    </span>
-                  </div>
-                </div>
-              </div>
+.contact-bar {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
 
-  <!-- RIGHT: CONTACT + BUTTONS -->
-  <div class="flex flex-col items-start gap-3 md:items-end">
+.contact-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.15);
+  padding: 6px 16px;
+  border-radius: 40px;
+  transition: background 0.2s;
+}
 
-    <div class="text-sm text-slate-600 text-left md:text-right">
-      <p>{{ profile.location }}</p>
-      <a :href="`mailto:${profile.email}`" class="hover:underline">
-        {{ profile.email }}
-      </a>
-    </div>
+.contact-link:hover {
+  background: rgba(255,255,255,0.3);
+}
 
-    <div class="flex gap-3">
-      <a
-        :href="profile.github"
-        target="_blank"
-        class="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700"
-      >
-        GitHub
-      </a>
+.badges {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
 
-      <a
-        :href="profile.linkedin"
-        target="_blank"
-        class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-blue-500 text-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-400"
-      >
-        LinkedIn
-      </a>
-    </div>
+.badge {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(4px);
+  padding: 6px 16px;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
 
-  </div>
-</header>
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
 
-          <!-- SUMMARY -->
-          <section class="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-6">
-            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
-              Profile
-            </h2>
-            <p class="mt-3 text-slate-700 leading-relaxed">
-              {{ profile.summary }}
-            </p>
-          </section>
+.social-btn {
+  background: white;
+  color: #4f46e5;
+  padding: 8px 24px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
-          <!-- GRID -->
-          <div class="mt-10 grid gap-10 md:grid-cols-3">
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(0,0,0,0.2);
+}
 
-            <!-- LEFT -->
-            <aside class="md:col-span-1 space-y-10">
+/* Summary */
+.summary {
+  padding: 60px 0;
+  background: white;
+}
 
-              <!-- SKILLS -->
-              <section>
-                <div class="flex items-center gap-3">
-                  <div class="h-6 w-1 rounded-full bg-indigo-500"></div>
-                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                    Skills
-                  </h2>
-                </div>
+.summary h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #1e293b;
+  text-align: center;
+}
 
-                <div class="mt-4 space-y-5">
-                  <div v-for="s in skills" :key="s.group">
-                    <p class="text-sm font-semibold text-slate-800">{{ s.group }}</p>
+.summary p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #334155;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-                    <div class="mt-2 flex flex-wrap gap-2">
-                      <span
-                        v-for="(item, idx) in s.items"
-                        :key="idx"
-                        class="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-700"
-                      >
-                        {{ item }}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </section>
+/* Skills */
+.skills {
+  padding: 60px 0;
+  background: #f1f5f9;
+}
 
-              <!-- EDUCATION -->
-              <section>
-                <div class="flex items-center gap-3">
-                  <div class="h-6 w-1 rounded-full bg-sky-500"></div>
-                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                    Education
-                  </h2>
-                </div>
+.skills h2 {
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #1e293b;
+}
 
-                <div class="mt-4">
-                  <p class="font-semibold text-slate-800">{{ education.degree }}</p>
-                  <p class="text-sm text-slate-600">{{ education.school }}</p>
-                  <p class="text-xs text-slate-500 mt-1">{{ education.date }}</p>
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+}
 
-                  <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-                    <span class="font-medium text-slate-700">Thesis:</span>
-                    {{ education.thesis }}
-                  </p>
-                </div>
-              </section>
+.skill-group h3 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #4f46e5;
+  border-left: 3px solid #4f46e5;
+  padding-left: 12px;
+}
 
-              <!-- AVAILABILITY -->
-              <section>
-                <div class="flex items-center gap-3">
-                  <div class="h-6 w-1 rounded-full bg-emerald-500"></div>
-                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                    Availability
-                  </h2>
-                </div>
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
-                <ul class="mt-4 space-y-2 text-sm text-slate-700">
-                  <li v-for="(a, idx) in availability" :key="idx" class="flex gap-2">
-                    <span class="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400"></span>
-                    <span>{{ a }}</span>
-                  </li>
-                </ul>
-              </section>
-            </aside>
+.skill-tag {
+  background: white;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
 
-            <!-- RIGHT -->
-            <main class="md:col-span-2 space-y-12">
+.skill-tag:hover {
+  border-color: #4f46e5;
+  transform: translateY(-2px);
+}
 
-              <!-- PROJECTS -->
-              <section>
-                <div class="flex items-center gap-3">
-                  <div class="h-6 w-1 rounded-full bg-sky-500"></div>
-                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                    Selected Projects
-                  </h2>
-                </div>
+/* Projects */
+.projects {
+  padding: 60px 0;
+  background: white;
+}
 
-                <div class="mt-6 grid gap-4">
-                  <div
-                    v-for="p in highlights"
-                    :key="p.title"
-                    class="overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:shadow-sm"
-                  >
-                    <!-- PROJECT IMAGE -->
-                    <a :href="p.url" target="_blank" class="block">
-                      <img
-                        :src="p.image"
-                        :alt="`${p.title} preview`"
-                        class="h-52 w-full object-cover"
-                      />
-                    </a>
+.projects h2 {
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #1e293b;
+}
 
-                    <div class="p-5">
-                      <div class="flex items-start justify-between gap-4">
-                        <div>
-                          <p class="font-semibold text-slate-900">{{ p.title }}</p>
-                          <p class="text-sm text-slate-600">{{ p.subtitle }}</p>
-                          <p class="mt-2 text-xs text-slate-500">
-                            {{ p.tags.join(' • ') }}
-                          </p>
-                        </div>
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
 
-                        <a
-                          :href="p.url"
-                          target="_blank"
-                          class="shrink-0 rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
-                        >
-                          View
-                        </a>
-                      </div>
+.project-card {
+  background: #f8fafc;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-                      <ul class="mt-4 space-y-2 text-sm text-slate-700">
-                        <li v-for="(b, idx) in p.bullets" :key="idx" class="flex gap-2">
-                          <span class="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400"></span>
-                          <span>{{ b }}</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </section>
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+}
 
-              <!-- EXPERIENCE -->
-              <section>
-                <div class="flex items-center gap-3">
-                  <div class="h-6 w-1 rounded-full bg-indigo-500"></div>
-                  <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                    Experience
-                  </h2>
-                </div>
+.project-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
 
-                <div class="mt-6 space-y-8">
-                  <div v-for="(e, idx) in experience" :key="idx" class="relative pl-6">
-                    <!-- timeline dot -->
-                    <div class="absolute left-0 top-2 h-3 w-3 rounded-full bg-indigo-500"></div>
-                    <!-- timeline line -->
-                    <div class="absolute left-[5px] top-6 h-[calc(100%-1rem)] w-px bg-slate-200"></div>
+.project-content {
+  padding: 24px;
+}
 
-                    <div class="flex items-start justify-between gap-4">
-                      <div>
-                        <p class="font-semibold text-slate-900">{{ e.title }}</p>
-                        <p class="text-sm text-slate-600">{{ e.company }}</p>
-                      </div>
-                      <p class="text-xs text-slate-500 whitespace-nowrap">{{ e.date }}</p>
-                    </div>
+.project-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
 
-                    <ul class="mt-3 space-y-2 text-sm text-slate-700">
-                      <li v-for="(b, bidx) in e.bullets" :key="bidx" class="flex gap-2">
-                        <span class="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400"></span>
-                        <span>{{ b }}</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-            </main>
+.project-subtitle {
+  font-size: 0.9rem;
+  color: #4f46e5;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.project-tag {
+  background: #e2e8f0;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.project-bullets {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.project-bullets li {
+  font-size: 0.85rem;
+  color: #475569;
+  padding: 4px 0 4px 20px;
+  position: relative;
+}
+
+.project-bullets li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: #4f46e5;
+}
+
+.project-link {
+  display: inline-block;
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+  transition: gap 0.2s;
+}
+
+.project-link:hover {
+  gap: 8px;
+}
+
+/* Experience */
+.experience {
+  padding: 60px 0;
+  background: #f1f5f9;
+}
+
+.experience h2 {
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #1e293b;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.timeline-left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  background: #4f46e5;
+  border-radius: 50%;
+  margin-top: 6px;
+}
+
+.timeline-item:not(:last-child) .timeline-left::after {
+  content: '';
+  position: absolute;
+  top: 24px;
+  width: 2px;
+  height: calc(100% + 8px);
+  background: #cbd5e1;
+}
+
+.timeline-content {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.job-header h3 {
+  font-size: 1.1rem;
+  color: #0f172a;
+}
+
+.job-date {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.job-company {
+  font-weight: 600;
+  color: #4f46e5;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.timeline-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.timeline-content li {
+  font-size: 0.85rem;
+  color: #475569;
+  padding: 4px 0 4px 20px;
+  position: relative;
+}
+
+.timeline-content li::before {
+  content: "•";
+  position: absolute;
+  left: 6px;
+  color: #4f46e5;
+  font-weight: bold;
+}
+
+/* Info Grid */
+.info-grid {
+  padding: 60px 0;
+  background: white;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.info-card {
+  background: #f8fafc;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.info-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+.degree {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.school {
+  color: #4f46e5;
+  font-weight: 500;
+  margin: 4px 0;
+}
+
+.date {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.thesis {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-top: 12px;
+}
+
+.info-card ul {
+  list-style: none;
+}
+
+.info-card li {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.info-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  background: #1e293b;
+  color: #94a3b8;
+  text-align: center;
+  padding: 32px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.8rem; }
+  .contact-bar { flex-direction: column; align-items: center; gap: 10px; }
+  .job-header { flex-direction: column; }
+  .timeline-item { flex-direction: column; }
+  .timeline-left::after { display: none; }
+  .container { padding: 0 20px; }
+}
+</style>
