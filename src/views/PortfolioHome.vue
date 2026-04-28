@@ -254,7 +254,7 @@ const education = {
 };
 
 const availability = [
-  "Immediate availability for full-time remote roles",
+  "Immediate availability",
   "Comfortable working across time zones",
   "Strong written communication skills",
 ];
