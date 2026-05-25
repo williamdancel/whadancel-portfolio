@@ -155,6 +155,17 @@ const highlights = [
     image: "/images/highlighted-projects/tinbo.png",
   },
   {
+    title: "Nicolas Leveille Website",
+    subtitle: "Freelance website for Nicolas Leveille",
+    tags: ["Laravel 13", "Vue 3", "Inertia JS", "Tailwind CSS"],
+    bullets: [
+      "User Interface of the website",
+      "Admin dashboard with Enquiries and Evaluation module",
+    ],
+    url: "https://gokw.ca/",
+    image: "/images/highlighted-projects/nicolas-leveille.png",
+  },
+  {
     title: "CrowPOS",
     subtitle: "Offline-capable desktop POS. Simple and clean.",
     tags: ["Laravel 12", "Livewire", "Tailwind CSS", "NativePHP (Desktop App)"],
@@ -169,7 +180,7 @@ const highlights = [
   {
     title: "kukuys.live",
     subtitle: "Freelance website for Kukuys Streamer Group (Dota 2 Pros)",
-    tags: ["Laravel 12", "Vue 3", "Tailwind CSS"],
+    tags: ["Laravel 12", "Vue 3", "Inertia JS", "Tailwind CSS"],
     bullets: [
       "Admin dashboard with Dota Pub Tracker",
       "Taryahan matchmaking for CS2 / Dota 2",
