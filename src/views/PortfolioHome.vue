@@ -205,6 +205,24 @@ const highlights = [
 
 const experience = [
   {
+    company: "Meydenbauer Partners",
+    title: "Senior Full Stack Engineer (Remote)",
+    date: "May 2026 – Present",
+    bullets: [
+      "Currently awaiting client assignment",
+    ],
+  },
+  {
+    company: "Freelance",
+    title: "Freelance Full Stack Developer / Upskilling",
+    date: "Sept 2025 – April 2026",
+    bullets: [
+      "Designed and developed the Nicolas Leveille website",
+      "Built CrowPOS as a full-stack personal POS application",
+      "Created kukuys.live, an online community platform",
+    ],
+  },
+  {
     company: "Outsourced Staff",
     title: "Full Stack Developer — Ozcar.com.au (Remote)",
     date: "Nov 2024 – Aug 2025",
