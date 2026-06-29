@@ -52,7 +52,15 @@
         <h2>Featured Projects</h2>
         <div class="projects-grid">
           <div v-for="project in highlights" :key="project.title" class="project-card">
-            <div class="project-image" :style="{ backgroundImage: 'url(' + project.image + ')' }"></div>
+            <div 
+              class="project-image" 
+              :style="{ backgroundImage: 'url(' + project.image + ')' }"
+              @click="openGallery(project)"
+            >
+              <div class="image-overlay">
+                <span class="gallery-text">View Gallery</span>
+              </div>
+            </div>
             <div class="project-content">
               <h3>{{ project.title }}</h3>
               <p class="project-subtitle">{{ project.subtitle }}</p>
@@ -62,7 +70,7 @@
               <ul class="project-bullets">
                 <li v-for="bullet in project.bullets" :key="bullet">{{ bullet }}</li>
               </ul>
-              <a :href="project.url" target="_blank" class="project-link">View Project →</a>
+              <a v-if="project.url.length > 0" :href="project.url" target="_blank" class="project-link">View Project →</a>
             </div>
           </div>
         </div>
@@ -114,6 +122,57 @@
       </div>
     </section>
 
+    <!-- Image Gallery Modal -->
+    <div v-if="galleryVisible" class="gallery-modal" @click="closeGallery">
+      <div class="gallery-modal-content" @click.stop>
+        <button class="gallery-close" @click="closeGallery">✕</button>
+        
+        <div class="gallery-header">
+          <h2>{{ currentProject?.title }}</h2>
+          <p>{{ currentProject?.subtitle }}</p>
+        </div>
+
+        <div class="gallery-main">
+          <img 
+            :src="galleryImages[currentImageIndex]" 
+            :alt="currentProject?.title"
+            class="gallery-image"
+          />
+          
+          <button 
+            v-if="galleryImages.length > 1" 
+            class="gallery-nav gallery-nav-prev" 
+            @click="prevImage"
+          >
+            ❮
+          </button>
+          <button 
+            v-if="galleryImages.length > 1" 
+            class="gallery-nav gallery-nav-next" 
+            @click="nextImage"
+          >
+            ❯
+          </button>
+        </div>
+
+        <div v-if="galleryImages.length > 1" class="gallery-thumbnails">
+          <div 
+            v-for="(image, index) in galleryImages" 
+            :key="index"
+            class="gallery-thumbnail"
+            :class="{ active: index === currentImageIndex }"
+            @click="currentImageIndex = index"
+          >
+            <img :src="image" :alt="`${currentProject?.title} - Image ${index + 1}`" />
+          </div>
+        </div>
+
+        <div class="gallery-info">
+          <span>{{ currentDisplayIndex }} / {{ totalImages }}</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
       <p>© {{ new Date().getFullYear() }} William Harry A. Dancel | Full Stack PHP Developer</p>
@@ -122,6 +181,32 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+
+// Type definitions
+interface Project {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  bullets: string[];
+  url: string;
+  image: string;
+  gallery: string[];
+}
+
+interface Skill {
+  group: string;
+  items: string[];
+}
+
+interface Job {
+  company: string;
+  title: string;
+  date: string;
+  bullets: string[];
+}
+
+// Profile data
 const profile = {
   name: "William Harry A. Dancel",
   role: "Full Stack PHP Developer",
@@ -130,18 +215,45 @@ const profile = {
   email: "william.a.dancel@gmail.com",
   github: "https://github.com/williamdancel",
   linkedin: "https://linkedin.com/in/william-harry-dancel-06516a231/",
-  badges: ['• Laravel • Codeigniter • VueJS • JQuery' , '8 yrs PHP Dev', 'Remote-ready'],
+  badges: ['• Laravel • Codeigniter • VueJS • JQuery', '8 yrs PHP Dev', 'Docker', 'Remote-ready'],
   summary: "Full Stack PHP Web Developer with 8 years of experience working with distributed teams and international clients. Strong expertise in PHP (Laravel, CodeIgniter, CakePHP), REST APIs, and frontend technologies (VueJS, Tailwind CSS, Bootstrap CSS, Jquery, Javascript). Proven ability to maintain and enhance large-scale production systems, communicate effectively across time zones, and deliver results independently in fully remote/hybrid/onsite environments.",
 };
 
-const skills = [
+// Skills data
+const skills: Skill[] = [
   { group: "Backend", items: ["PHP 7.2+–8.3+", "Laravel 12", "NativePHP", "CodeIgniter 3", "CakePHP 3", "Livewire", "REST APIs"] },
   { group: "Frontend", items: ["Vue 3", "Javascript", "jQuery", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap CSS"] },
   { group: "Database", items: ["MySQL", "PostgreSQL", "SQLite"] },
   { group: "Workflow", items: ["Docker", "Git (GitHub/GitLab/Bitbucket)", "Remote Collaboration", "Cross-timezone communication"] },
 ];
 
-const highlights = [
+// Projects data with galleries
+const highlights: Project[] = [
+   {
+    title: "Ruststreet",
+    subtitle: "Social Media Platform for the Rust Gaming Community",
+    tags: [
+      "Laravel 13",
+      "Vue.js 3",
+      "Inertia.js",
+      "Tailwind CSS",
+      "Docker"
+    ],
+    bullets: [
+      "Designed and developed a full-stack social platform from the ground up for the Rust gaming community.",
+      "Implemented player profiles, clan recruitment, LFG, social feeds, notifications, messaging, and moderation features.",
+      "Focused on scalability, clean architecture, performance, and long-term maintainability."
+    ],
+    url: "",
+    image: "/images/highlighted-projects/ruststreet-1.png",
+    gallery: [
+      "/images/highlighted-projects/ruststreet-1.png",
+      "/images/highlighted-projects/ruststreet-2.png",
+      "/images/highlighted-projects/ruststreet-3.png",
+      "/images/highlighted-projects/ruststreet-4.png",
+      "/images/highlighted-projects/ruststreet-5.png",
+    ]
+  },
   {
     title: "Tinbo.ph",
     subtitle: "OFW digital services platform (Payments, Bills, Virtual Numbers)",
@@ -153,6 +265,13 @@ const highlights = [
     ],
     url: "https://tinbo.ph",
     image: "/images/highlighted-projects/tinbo.png",
+    gallery: [
+      "/images/highlighted-projects/tinbo.png",
+      "/images/highlighted-projects/tinbo-2.png",
+      "/images/highlighted-projects/tinbo-3.png",
+      "/images/highlighted-projects/tinbo-4.png",
+      "/images/highlighted-projects/tinbo-5.png",
+    ]
   },
   {
     title: "Nicolas Leveille Website",
@@ -164,6 +283,13 @@ const highlights = [
     ],
     url: "https://gokw.ca/",
     image: "/images/highlighted-projects/nicolas-leveille.png",
+    gallery: [
+      "/images/highlighted-projects/nicolas-leveille.png",
+      "/images/highlighted-projects/nicolas-leveille-2.png",
+      "/images/highlighted-projects/nicolas-leveille-3.png",
+      "/images/highlighted-projects/nicolas-leveille-4.png",
+      "/images/highlighted-projects/nicolas-leveille-5.png",
+    ]
   },
   {
     title: "CrowPOS",
@@ -176,18 +302,35 @@ const highlights = [
     ],
     url: "https://www.whadancel.dev/crowpos",
     image: "/images/highlighted-projects/crowPOS.png",
+    gallery: [
+      "/images/highlighted-projects/crowPOS.png",
+      "/images/highlighted-projects/crowPOS-2.png",
+      "/images/highlighted-projects/crowPOS-3.png",
+      "/images/highlighted-projects/crowPOS-4.png",
+      "/images/highlighted-projects/crowPOS-5.png",
+      "/images/highlighted-projects/crowPOS-6.png",
+      "/images/highlighted-projects/crowPOS-7.png",
+    ]
   },
   {
     title: "kukuys.live",
-    subtitle: "Freelance website for Kukuys Streamer Group (Dota 2 Pros)",
+    subtitle: "Personal project website for Kukuys Streamer Group (Dota 2 Pros)",
     tags: ["Laravel 12", "Vue 3", "Inertia JS", "Tailwind CSS"],
     bullets: [
       "Admin dashboard with Dota Pub Tracker",
       "Taryahan matchmaking for CS2 / Dota 2",
       "Partner Enquiries module",
     ],
-    url: "https://kukuys.live",
+    url: "",
     image: "/images/highlighted-projects/kukuys.png",
+    gallery: [
+      "/images/highlighted-projects/kukuys.png",
+      "/images/highlighted-projects/kukuys-2.png",
+      "/images/highlighted-projects/kukuys-3.png",
+      "/images/highlighted-projects/kukuys-4.png",
+      "/images/highlighted-projects/kukuys-5.png",
+      "/images/highlighted-projects/kukuys-6.png",
+    ]
   },
   {
     title: "Tipsportal.com",
@@ -200,10 +343,23 @@ const highlights = [
     ],
     url: "https://web.archive.org/web/20201201231927/https://tipsportal.com/",
     image: "/images/highlighted-projects/tipsportal.png",
+    gallery: [
+      "/images/highlighted-projects/tipsportal.png",
+      "/images/highlighted-projects/tipsportal-2.png",
+    ]
   },
 ];
 
-const experience = [
+// Experience data
+const experience: Job[] = [
+  {
+    company: "Meydenbaur Partners",
+    title: "Senior Full-Stack Engineer",
+    date: "May 2026 – Present",
+    bullets: [
+      "Awaiting for client assignment",
+    ],
+  },
   {
     company: "Freelance",
     title: "Freelance Full Stack Developer / Upskilling",
@@ -267,6 +423,7 @@ const experience = [
   },
 ];
 
+// Education data
 const education = {
   school: "Arellano University",
   degree: "Bachelor of Computer Science major in Information Technology",
@@ -274,11 +431,84 @@ const education = {
   thesis: "IT-JOB MATCH – Online Job Matching System (Laravel 5.5, Jquery, Bootstrap CSS, MySQL)",
 };
 
-const availability = [
+// Availability data
+const availability: string[] = [
   "Immediate availability",
   "Comfortable working across time zones",
   "Strong written communication skills",
 ];
+
+// Gallery state with explicit typing
+const galleryVisible = ref<boolean>(false);
+const currentProject = ref<Project | null>(null);
+const currentImageIndex = ref<number>(0);
+
+// Computed properties for gallery
+const galleryImages = computed<string[]>(() => {
+  return currentProject.value?.gallery || [currentProject.value?.image || ''];
+});
+
+const currentDisplayIndex = computed<number>(() => {
+  return currentImageIndex.value + 1;
+});
+
+const totalImages = computed<number>(() => {
+  return galleryImages.value.length;
+});
+
+// Gallery methods
+const openGallery = (project: Project): void => {
+  currentProject.value = project;
+  currentImageIndex.value = 0;
+  galleryVisible.value = true;
+  document.body.style.overflow = 'hidden';
+};
+
+const closeGallery = (): void => {
+  galleryVisible.value = false;
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    currentProject.value = null;
+    currentImageIndex.value = 0;
+  }, 300);
+};
+
+const nextImage = (): void => {
+  const currentIndex = currentImageIndex.value;
+  const total = galleryImages.value.length;
+  if (currentIndex < total - 1) {
+    currentImageIndex.value = currentIndex + 1;
+  }
+};
+
+const prevImage = (): void => {
+  const currentIndex = currentImageIndex.value;
+  if (currentIndex > 0) {
+    currentImageIndex.value = currentIndex - 1;
+  }
+};
+
+// Keyboard navigation
+const handleKeyDown = (e: KeyboardEvent): void => {
+  if (!galleryVisible.value) return;
+  
+  if (e.key === 'Escape') {
+    closeGallery();
+  } else if (e.key === 'ArrowRight') {
+    nextImage();
+  } else if (e.key === 'ArrowLeft') {
+    prevImage();
+  }
+};
+
+// Lifecycle hooks
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeyDown);
+});
 </script>
 
 <style scoped>
@@ -509,6 +739,48 @@ const availability = [
   height: 200px;
   background-size: cover;
   background-position: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.project-image:hover .image-overlay {
+  opacity: 1;
+}
+
+.project-image:hover {
+  transform: scale(1.02);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 20px 20px 0 0;
+}
+
+.gallery-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.gallery-text {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
 }
 
 .project-content {
@@ -573,6 +845,173 @@ const availability = [
 
 .project-link:hover {
   gap: 8px;
+}
+
+/* Gallery Modal */
+.gallery-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gallery-modal-content {
+  background: #1e293b;
+  border-radius: 20px;
+  max-width: 90%;
+  max-height: 90vh;
+  width: 100%;
+  position: relative;
+  padding: 20px;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.gallery-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s;
+}
+
+.gallery-close:hover {
+  transform: rotate(90deg);
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-right: 40px;
+}
+
+.gallery-header h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.gallery-header p {
+  color: #94a3b8;
+  margin: 4px 0 0;
+}
+
+.gallery-main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.gallery-image {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.gallery-nav-prev {
+  left: 10px;
+}
+
+.gallery-nav-next {
+  right: 10px;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.gallery-thumbnail {
+  width: 80px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.gallery-thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.gallery-thumbnail.active {
+  border-color: #4f46e5;
+  transform: scale(1.05);
+}
+
+.gallery-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-info {
+  text-align: center;
+  color: #94a3b8;
+  margin-top: 12px;
+  font-size: 0.9rem;
 }
 
 /* Experience */
@@ -753,6 +1192,7 @@ const availability = [
   font-size: 0.85rem;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .hero h1 { font-size: 1.8rem; }
   .contact-bar { flex-direction: column; align-items: center; gap: 10px; }
@@ -760,5 +1200,25 @@ const availability = [
   .timeline-item { flex-direction: column; }
   .timeline-left::after { display: none; }
   .container { padding: 0 20px; }
+  
+  .gallery-modal-content {
+    max-width: 95%;
+    padding: 15px;
+  }
+  
+  .gallery-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .gallery-thumbnail {
+    width: 60px;
+    height: 45px;
+  }
+  
+  .gallery-header h2 {
+    font-size: 1.2rem;
+  }
 }
 </style>
