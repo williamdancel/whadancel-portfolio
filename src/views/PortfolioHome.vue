@@ -354,7 +354,7 @@ const highlights: Project[] = [
 const experience: Job[] = [
   {
     company: "Meydenbaur Partners",
-    title: "Senior Full-Stack Engineer",
+    title: "Senior Full-Stack Engineer (Part-time)",
     date: "May 2026 – Present",
     bullets: [
       "Awaiting for client assignment",
