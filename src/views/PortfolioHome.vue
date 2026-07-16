@@ -210,12 +210,12 @@ interface Job {
 const profile = {
   name: "William Harry A. Dancel",
   role: "Full Stack PHP Developer",
-  location: "San Pablo City, Laguna, Philippines (Open to Global Remote Work)",
+  location: "San Pablo City, Laguna, Philippines (Open to Remote/Hybrid/Onsite Work)",
   phone: "(+63) 998 256 7098",
   email: "william.a.dancel@gmail.com",
   github: "https://github.com/williamdancel",
   linkedin: "https://linkedin.com/in/william-harry-dancel-06516a231/",
-  badges: ['• Laravel • Codeigniter • VueJS • JQuery', '8 yrs PHP Dev', 'Docker', 'Remote-ready'],
+  badges: ['• Laravel • Codeigniter • VueJS • JQuery', '8 yrs PHP Dev', 'Docker', 'Remote/Hybrid/Onsite-ready'],
   summary: "Full Stack PHP Web Developer with 8 years of experience working with distributed teams and international clients. Strong expertise in PHP (Laravel, CodeIgniter, CakePHP), REST APIs, and frontend technologies (VueJS, Tailwind CSS, Bootstrap CSS, Jquery, Javascript). Proven ability to maintain and enhance large-scale production systems, communicate effectively across time zones, and deliver results independently in fully remote/hybrid/onsite environments.",
 };
 
@@ -224,7 +224,7 @@ const skills: Skill[] = [
   { group: "Backend", items: ["PHP 7.2+–8.3+", "Laravel 12", "NativePHP", "CodeIgniter 3", "CakePHP 3", "Livewire", "REST APIs"] },
   { group: "Frontend", items: ["Vue 3", "Javascript", "jQuery", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap CSS"] },
   { group: "Database", items: ["MySQL", "PostgreSQL", "SQLite"] },
-  { group: "Workflow", items: ["Docker", "Git (GitHub/GitLab/Bitbucket)", "Remote Collaboration", "Cross-timezone communication"] },
+  { group: "Workflow", items: ["Docker", "Git (GitHub/GitLab/Bitbucket)", "Remote/Hybrid/Onsite Collaboration", "Cross-timezone communication"] },
 ];
 
 // Projects data with galleries
